@@ -78,7 +78,7 @@ At a minimum, your team must provide the graders with a description of your test
 
 * 2% readme file (see below)
 
-  <li> <h1>Submission</h1></li>
+## Submission
 <p><em>Individual submission</em>: Download a peer evaluation form from your
 Carmen account, print out the form, and fill out with a pen. Complete this form individually only, i.e. not as a group.
 Submit this form in class on the next class meeting after the due date. Please staple, if needed! </p>
