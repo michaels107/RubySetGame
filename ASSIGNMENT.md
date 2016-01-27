@@ -18,7 +18,7 @@ The role of a manager is **_NOT_** to tell anyone what to do or boss anyone arou
 **BEFORE** starting the group portion of the project **_EACH_** team member must individually accomplish the following:
 
 * Thoroughly study the lecture notes on Git and Ruby
-* Accomplish any tutorials and related reading material indicated in the _[Resources](http://web.cse.ohio-state.edu/~shareef/3901.au15/resources/)_ section of the course website
+* Accomplish any tutorials and related reading material indicated in the _[Resources](http://web.cse.ohio-state.edu/~shareef/3901.sp16/resources/)_ section of the course website
 * Also, look over the reading material in the "Software Engineering" portion of the Resources section of the course website
 
 **_Important Note:_** A team member who is ill prepared before starting the group portion of this assignment because s/he has not sufficiently accomplished the individual portion of the assignment above cannot use this as an excuse for that team member to contribute less work on the project. Those team members who are ill prepared **_MUST_** put in more time and effort than other team members to prepare in order to be able to contribute **_EQUALLY_** with all other team members. In addition, those team members that are well prepared **_MUST_** work to help those that need to catch up with the material.
@@ -83,3 +83,30 @@ At a minimum, your team must provide the graders with a description of your test
   _Individual submission:_ Download a peer evaluation form from your Carmen account, print out the form, and fill out with a pen. Complete this form individually only, i.e. not as a group. Submit this form in class on the due date. Please staple!
 
   _Group submission:_ The graders will retrieve your work (readme plus your solution) from your team's GitHub private repository provided for you under the course's organization cse3901-osu-2015su. All team member's work must eventually be merged into a final committed version in Git. The readme contains the names of each project manager and states what each team member specifically contributed to the final submission. **_For the latter, only report on contributions that made it into to the final solution._** Clearly indicate which team members performed testing and to which portions of the solutions. Also include any instructions to the grader as to how to execute the code.
+  <li> <h1>Submission</h1></li>
+<p><em>Individual submission</em>: Download a peer evaluation form from your
+Carmen account, print out the form, and fill out with a pen. Complete this form individually only, i.e. not as a group.
+Submit this form in class on the next class meeting after the due date. Please staple, if needed! </p>
+<p><em>Group submission</em>: The graders will retrieve your work (<em>readme</em> plus your solution) from your team's Github private repository 
+provided for you under the course's organization cse3901-osu-2016sp-8232-10487. All team member's work must eventually be merged 
+into a final committed version in Git. The <em>readme</em>  contains the names of each project manager and states what 
+each team member <em>specifically</em> contributed to the final submission. <em>For the latter, only report on 
+contributions that made it into to the final solution</em>. Clearly indicate which team members performed testing and 
+to which portions of the solutions. Also include any instructions to the grader as to how to execute the code.</p>
+<p>You will submit your project by simply
+creating a git <em>tag</em> called "submission" and then pushing
+this new tag to your shared repository. (A tag is basically
+an immutable branch.)</p>
+
+<p>That is:</p>
+
+<pre><code>$ git tag -a submission -m "completed project"
+$ git push origin submission
+</code></pre>
+<p><strong><em>IMPORTANT</em></strong>: Your repository must include a <em>README</em>
+text file containing the name of each project manager and a
+description of each team member's <em>specific</em> contributions
+to the final submission. Clearly indicate each team member's
+contributions to development, testing, documentation, etc.
+Also include instructions for the grader as to how to
+execute your program.</p>
