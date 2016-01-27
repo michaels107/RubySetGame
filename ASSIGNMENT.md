@@ -77,12 +77,7 @@ Use single line commenting where appropriate but not excessive.
 At a minimum, your team must provide the graders with a description of your test plan and indicate what does and does not work. It would be very helpful if you provide test cases to the graders as well for both [Unit](http://en.wikipedia.org/wiki/Unit_testing) and [Integration](http://en.wikipedia.org/wiki/Integration_testing) testing (also see lecture notes).
 
 * 2% readme file (see below)
-
-## Submission
-
-  _Individual submission:_ Download a peer evaluation form from your Carmen account, print out the form, and fill out with a pen. Complete this form individually only, i.e. not as a group. Submit this form in class on the due date. Please staple!
-
-  _Group submission:_ The graders will retrieve your work (readme plus your solution) from your team's GitHub private repository provided for you under the course's organization cse3901-osu-2015su. All team member's work must eventually be merged into a final committed version in Git. The readme contains the names of each project manager and states what each team member specifically contributed to the final submission. **_For the latter, only report on contributions that made it into to the final solution._** Clearly indicate which team members performed testing and to which portions of the solutions. Also include any instructions to the grader as to how to execute the code.
+* 
   <li> <h1>Submission</h1></li>
 <p><em>Individual submission</em>: Download a peer evaluation form from your
 Carmen account, print out the form, and fill out with a pen. Complete this form individually only, i.e. not as a group.
