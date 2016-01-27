@@ -77,7 +77,7 @@ Use single line commenting where appropriate but not excessive.
 At a minimum, your team must provide the graders with a description of your test plan and indicate what does and does not work. It would be very helpful if you provide test cases to the graders as well for both [Unit](http://en.wikipedia.org/wiki/Unit_testing) and [Integration](http://en.wikipedia.org/wiki/Integration_testing) testing (also see lecture notes).
 
 * 2% readme file (see below)
-* 
+
   <li> <h1>Submission</h1></li>
 <p><em>Individual submission</em>: Download a peer evaluation form from your
 Carmen account, print out the form, and fill out with a pen. Complete this form individually only, i.e. not as a group.
