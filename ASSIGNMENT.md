@@ -32,7 +32,7 @@ Your project will be graded not only on your group's solution but also on how we
 * Your team must meet face-to-face each week with all team members present on the agreed upon day and time your team members indicated to me in your Project #1 submission.
 * Your team should have additional face-to-face meetings. You should also determine additional channels of communication with team members since you will need to integrate your work with others.
 * Your team should plan and allocate time to integrate your work well before the deadline. I suggest that the team work with the overall project manager to set team deadlines early so that all team members know the status of everyone's work. Create a schedule that all team members can agree to adhere to and work to achieve towards.
-* Use your team's private repository on GitHub to help manage the development of your team's solution. We will provide this private repository for your team in our GitHub organization called cse3901-osu-2016su-10246.
+* Use your team's private repository on GitHub to help manage the development of your team's solution. We will provide this private repository for your team in our GitHub organization called cse3901-osu-2017su.
 
 ### Problem: The Game of Set
 
