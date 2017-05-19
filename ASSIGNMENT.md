@@ -18,7 +18,7 @@ The role of a manager is **_NOT_** to tell anyone what to do or boss anyone arou
 **BEFORE** starting the group portion of the project **_EACH_** team member must individually accomplish the following:
 
 * Thoroughly study the lecture notes on Git and Ruby
-* Accomplish any tutorials and related reading material indicated in the _[Resources](http://web.cse.ohio-state.edu/~shareef/3901.su16/resources/)_ section of the course website
+* Accomplish any tutorials and related reading material indicated in the _[Resources](http://web.cse.ohio-state.edu/~shareef.1/3901.su17/resources/)_ section of the course website
 * Also, look over the reading material in the "Software Engineering" portion of the Resources section of the course website
 
 **_Important Note:_** A team member who is ill prepared before starting the group portion of this assignment because s/he has not sufficiently accomplished the individual portion of the assignment above cannot use this as an excuse for that team member to contribute less work on the project. Those team members who are ill prepared **_MUST_** put in more time and effort than other team members to prepare in order to be able to contribute **_EQUALLY_** with all other team members. In addition, those team members that are well prepared **_MUST_** work to help those that need to catch up with the material.
