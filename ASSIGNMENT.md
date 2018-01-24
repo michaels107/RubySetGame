@@ -54,7 +54,7 @@ This is not an exhaustive list of possibilities. Feel free to add whatever funct
 ## Grading
 
 * 78% Implementation
-Use this link to view _[Resources](http://web.cse.ohio-state.edu/~shareef.1/3901.sp18/labs/GradingGuidelines.pdf)_ when your group is formulating its solution. Though, this is notthe finalized grading template that the graders will use.
+Use this link to view _[Guidelines](http://web.cse.ohio-state.edu/~shareef.1/3901.sp18/labs/GradingGuidelines.pdf)_ when your group is formulating its solution. Though, this is notthe finalized grading template that the graders will use.
 * 10% Balanced work load
 Graders will determine the work load balance of your group work by using Git and Github repository analytics and documentation. In order to receive the full 10% of this portion of your grade, your team must show to the graders that work was equally balanced between the team members. Thus, your team must make a conscious effort to show Git and Github activity by all team members. In addition, your team must clearly document individual contributions in your documentation (see below) throughout the development of your solution. Activity that indicates only one or two members submitting work will result in a reduction in points.
 <p></p>
@@ -84,7 +84,7 @@ At a minimum, your team must provide the graders with a description of your test
 Carmen account, print out the form, and fill out with a pen. Complete this form individually only, i.e. not as a group.
 Submit this form in class on the next class meeting after the due date. Please staple, if needed! </p>
 <p><em>Group submission</em>: The graders will retrieve your work (<em>readme</em> plus your solution) from your team's Github private repository 
-provided for you under the course's organization cse3901-osu-2017au. All team member's work must eventually be merged 
+provided for you under the course's organization cse3901-osu-2018sp. All team member's work must eventually be merged 
 into a final committed version in Git. The <em>readme</em>  contains the names of each project manager and states what 
 each team member <em>specifically</em> contributed to the final submission. <em>For the latter, only report on 
 contributions that made it into to the final solution</em>. Clearly indicate which team members performed testing and 
