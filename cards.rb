@@ -2,7 +2,7 @@
 =begin
 Class that generates two decks of 81 unique cards, one base-deck
 and one play-deck. The base deck contains an array of all 81 unique cards and
-the play-deck starts with a shuffled version of the based deck. 
+the play-deck is a shuffled version of the based deck. 
 =end
 class Cards
 
