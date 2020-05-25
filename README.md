@@ -2,10 +2,10 @@
 ### Game of Set
 
 ### Roles
-* Overall Project Manager:
-* Coding Manager:
-* Testing Manager:
-* Documentation:
+* Overall Project Manager:Caroline Wheeler
+* Coding Manager:Duytan Tran
+* Testing Manager: Sean Michaels  
+* Documentation: Reema Gupta
 
 ### Contributions
 Please list who did what for each part of the project.
