@@ -53,3 +53,55 @@ def same_or_dif?(card_arr)
   card_arr.uniq.size != 2
 end
 
+# Author: Sean Michaels
+# Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
+# Method to ask the user for 3 cards to see if they're a set.
+def select_cards(cards)
+  puts 'Please select 3 cards for your chosen set.'
+  printf('First card: ')
+  card_one = gets.chomp
+  printf('Second card: ')
+  card_two = gets.chomp
+  printf('Third card: ')
+  card_three = gets.chomp
+
+  while card_one.eql?(card_three) || card_one.eql?(card_two) || card_two.eql?(card_three)
+
+    puts 'There was a duplicate card selected. Please select non-duplicate cards.'
+    puts 'Please select 3 cards for your chosen set.'
+    printf('First card: ')
+    card_one = gets.chomp
+    printf('Second card: ')
+    card_two = gets.chomp
+    printf('Third card: ')
+    card_three = gets.chomp
+  end
+  [card_one, card_two, card_three]
+end
+
+puts 'Welcome to the Set Game!'
+name = Cards.new
+puts 'Do you want to start playing[Y/N]:'
+ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
+play = ask.eql? 'Y'
+tabled_cards = []
+while play
+  (0..11).each do |i| # prints the cards into 3 rows with 4 columns
+    card = name.play_deck[i]
+    tabled_cards.push card
+    puts if i % 4 == 0 && i != 0
+    print card + " "
+  end
+  puts ''
+  selection = select_cards(tabled_cards)
+  puts isSet?(selection[0] , selection[1], selection[2])
+  if isSet?(selection[0] , selection[1], selection[2])
+    puts 'That was a valid set!'
+  else
+    puts 'The cards selected were not a valid set, try another selection of cards.'
+  end
+
+  puts 'Do you want to play again[Y/N]:' # for the user to replay
+  ask = gets.chomp
+  play = ask.eql? 'Y'
+end
