@@ -33,22 +33,23 @@ end
 
 # Below methods determine if a given set of three cards is a true set
 # Author: Caroline Wheeler
+# 5/26/2020
 
 # Let's assume a card looks like this - [green, oval, two, empty]
 
 # returns true if given array is a set, and false if not
-def isSet?(card_one, card_two, card_three)
-  card_arr = [card_one, card_two, card_three]
-  # Note: Below line only necessary if we decide to pass an arr instead of individual cards
+def isSet?(card_arr)
   return false if card_arr.size != 3
-  color_arr = [card_one[0], card_two[0], card_three[0]]
-  shape_arr = [card_one[1], card_two[1], card_three[1]]
-  num_arr = [card_one[2], card_two[2], card_three[2]]
-  shade_arr = [card_one[3], card_two[3], card_three[3]]
-  return same_or_dif?(color_arr) && same_or_dif?(shape_arr) && same_or_dif?(num_arr) && same_or_dif?(shade_arr)
+
+  color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
+  shape_arr = [card_arr[0][1], card_arr[1][1], card_arr[2][1]]
+  num_arr = [card_arr[0][2], card_arr[1][2], card_arr[2][2]]
+  shade_arr = [card_arr[0][3], card_arr[1][3], card_arr[2][3]]
+  same_or_dif?(color_arr) && same_or_dif?(shape_arr) && same_or_dif?(num_arr) && same_or_dif?(shade_arr)
 end
 
 # returns true if the arr contains all the same element of all different, false otherwise
-def same_or_dif? (card_array)
-  return card_array.uniq.size != 2
+def same_or_dif?(card_arr)
+  card_arr.uniq.size != 2
 end
+
