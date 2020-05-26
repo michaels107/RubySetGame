@@ -1,4 +1,5 @@
 # Created 5/22/2020 By Duytan Tran
+# Edited 5/26/2020 By Duytan Tran
 =begin
 Class that generates two decks of 81 unique cards, one base-deck
 and one play-deck. The base deck contains an array of all 81 unique cards and
@@ -8,10 +9,11 @@ class Cards
 
   # Created 5/22/2020 By Duytan Tran
   # Edited 5/25/2020 By Duytan Tran: Reimplemented to be terse
+  # Edited 5/26/2020 By Duytan Tran: Elements are a string instead of integers
   # Set base deck and randomized play deck creation
   def initialize
     @base_deck = [1, 2, 3].repeated_permutation(4).to_a
-    @base_deck.map! { |element_array| element_array.join.to_i }
+    @base_deck.map! { |element_array| element_array.join }
     @play_deck = @base_deck.sample(81)
   end
 
