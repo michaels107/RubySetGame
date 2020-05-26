@@ -1,13 +1,12 @@
 # File created 5/25/2020 by Sean Michaels
-# Edited 5/26/202 by Sean Michaels: Refactored some lines implemented a new method prompting for cards
+# Edited 5/26/2020 by Sean Michaels: Refactored some lines implemented a new method prompting for cards
+# Edited 5/26/2020 by Duytan Tran: Debugged and refactored to make terse and more readable
+require_relative 'cards'
 
-
-# Below methods determine if a given set of three cards is a true set
 # Author: Caroline Wheeler
-
-# Let's assume a card looks like this - [green, oval, two, empty]
-
-# returns true if given array is a set, and false if not
+# Assume a card looks like this - [green, oval, two, empty]
+# Method that determines if a given set of three cards is a true set
+# returns true if given array is a set, and false otherwise
 def isSet?(card_one, card_two, card_three)
   card_arr = [card_one, card_two, card_three]
   # Note: Below line only necessary if we decide to pass an arr instead of individual cards
@@ -24,9 +23,9 @@ def same_or_dif? (card_array)
   return card_array.uniq.size != 2
 end
 
-# Method to ask the user for 3 cards to see if they're a set.
 # Author: Sean Michaels
-
+# Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
+# Method to ask the user for 3 cards to see if they're a set.
 def select_cards(cards)
   puts 'Please select 3 cards for your chosen set.'
   printf('First card: ')
@@ -47,33 +46,26 @@ def select_cards(cards)
     printf('Third card: ')
     card_three = gets.chomp
   end
-  [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
+  [card_one, card_two, card_three]
 end
 
 puts 'Welcome to the Set Game!'
-require_relative 'cards'
 name = Cards.new
 puts 'Do you want to start playing[Y/N]:'
 ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
-play = if ask.eql? 'Y'
-         true
-       else
-         false
-       end
+play = ask.eql? 'Y'
 tabled_cards = []
 while play
   (0..11).each do |i| # prints the cards into 3 rows with 4 columns
     card = name.play_deck[i]
-    tabled_cards.push(card)
-    if i % 4 == 0 && i != 0
-      puts ''
-    end
-    print(card)
-    print(' ')
+    tabled_cards.push card
+    puts if i % 4 == 0 && i != 0
+    print card + " "
   end
   puts ''
   selection = select_cards(tabled_cards)
-  if isSet?(selection[0], selection[1], selection[2])
+  puts isSet?(selection[0] , selection[1], selection[2])
+  if isSet?(selection[0] , selection[1], selection[2])
     puts 'That was a valid set!'
   else
     puts 'The cards selected were not a valid set, try another selection of cards.'
@@ -81,13 +73,5 @@ while play
 
   puts 'Do you want to play again[Y/N]:' # for the user to replay
   ask = gets.chomp
-  play = if ask.eql? 'Y'
-           true
-         else
-           false
-         end
-
-  end
-
-
-
+  play = ask.eql? 'Y'
+end
