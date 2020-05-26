@@ -1,34 +1,5 @@
 # File created 5/25/2020 by Sean Michaels
-
-puts "Welcome to the Set Game!"
-require_relative 'cards'
-name = Cards.new
-puts "Do you want to start playing[Y/N]:"
-ask = gets.chomp  #checks if the user wants to play the game, used later for replay.
-if ask.eql? "Y"
-  play = true
-else
-  play = false
-end
-while play
-  for i in 0..11 # prints the cards into 3 rows with 4 columns
-    card = name.play_deck[i]
-    if i%4 == 0 && i != 0
-      puts ""
-    end
-    print(card)
-    print(' ')
-  end
-  puts ""
-
-  puts "Do you want to play again[Y/N]:" #for the user to replay
-  ask = gets.chomp
-  if ask.eql? "Y"
-    play = true
-  else
-    play = false
-  end
-end
+# Edited 5/26/202 by Sean Michaels: Refactored some lines implemented a new method prompting for cards
 
 
 # Below methods determine if a given set of three cards is a true set
@@ -52,3 +23,71 @@ end
 def same_or_dif? (card_array)
   return card_array.uniq.size != 2
 end
+
+# Method to ask the user for 3 cards to see if they're a set.
+# Author: Sean Michaels
+
+def select_cards(cards)
+  puts 'Please select 3 cards for your chosen set.'
+  printf('First card: ')
+  card_one = gets.chomp
+  printf('Second card: ')
+  card_two = gets.chomp
+  printf('Third card: ')
+  card_three = gets.chomp
+
+  while card_one.eql?(card_three) || card_one.eql?(card_two) || card_two.eql?(card_three)
+
+    puts 'There was a duplicate card selected. Please select non-duplicate cards.'
+    puts 'Please select 3 cards for your chosen set.'
+    printf('First card: ')
+    card_one = gets.chomp
+    printf('Second card: ')
+    card_two = gets.chomp
+    printf('Third card: ')
+    card_three = gets.chomp
+  end
+  [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
+end
+
+puts 'Welcome to the Set Game!'
+require_relative 'cards'
+name = Cards.new
+puts 'Do you want to start playing[Y/N]:'
+ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
+play = if ask.eql? 'Y'
+         true
+       else
+         false
+       end
+tabled_cards = []
+while play
+  (0..11).each do |i| # prints the cards into 3 rows with 4 columns
+    card = name.play_deck[i]
+    tabled_cards.push(card)
+    if i % 4 == 0 && i != 0
+      puts ''
+    end
+    print(card)
+    print(' ')
+  end
+  puts ''
+  selection = select_cards(tabled_cards)
+  if isSet?(selection[0], selection[1], selection[2])
+    puts 'That was a valid set!'
+  else
+    puts 'The cards selected were not a valid set, try another selection of cards.'
+  end
+
+  puts 'Do you want to play again[Y/N]:' # for the user to replay
+  ask = gets.chomp
+  play = if ask.eql? 'Y'
+           true
+         else
+           false
+         end
+
+  end
+
+
+
