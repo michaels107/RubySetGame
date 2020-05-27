@@ -1,16 +1,8 @@
 # File created 5/25/2020 by Sean Michaels
-# Edited 5/25/2020 by Sean Michaels
-# Edited 5/26/2020 by Caroline Wheeler
-# Edited by 5/26/2020 by Sean Michaels
-# Debugged 5/26/2020 by Duytan Tran
-# Debugged 5/27/2020 by Duytan Tran
-# Edited 5/27/2020 by Reema Gupta
-
-
 require_relative 'cards'
 # Below methods determine if a given set of three cards is a true set
 # Author: Caroline Wheeler
-# Created on 5/26/2020
+# 5/26/2020
 
 # Let's assume a card looks like this - [green, oval, two, empty]
 
@@ -31,8 +23,8 @@ def same_or_dif?(card_arr)
 end
 
 # Author: Reema Gupta
-#  method to count the number of  valid sets found depending on the number of  times you have played
-# Created on 5/27/2020
+# # method to count the number of  valid sets found depending on the number of  times you have played
+
 $count=0
 def setCount()
   $count=$count+1
@@ -42,10 +34,8 @@ end
 
 
 # Author: Sean Michaels
-# Created 5/26/2017 By Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
 # Debugged 5/27/2020 By Duytan Tran: Modified value passed in isSet? to be an array
-# Edited 5/27/2020 By Reema Gupta: Added the setCount Method Call
 # Method to ask the user for 3 cards to see if they're a set.
 def select_cards(cards)
   puts 'Please select 3 cards for your chosen set.'
