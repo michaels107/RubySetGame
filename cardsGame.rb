@@ -55,6 +55,7 @@ end
 
 # Author: Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
+# Debugged 5/27/2020 By Duytan Tran: Modified value passed in isSet? to be an array
 # Method to ask the user for 3 cards to see if they're a set.
 def select_cards(cards)
   puts 'Please select 3 cards for your chosen set.'
@@ -94,8 +95,7 @@ while play
   end
   puts ''
   selection = select_cards(tabled_cards)
-  puts isSet?(selection[0] , selection[1], selection[2])
-  if isSet?(selection[0] , selection[1], selection[2])
+  if isSet?(selection)
     puts 'That was a valid set!'
   else
     puts 'The cards selected were not a valid set, try another selection of cards.'
