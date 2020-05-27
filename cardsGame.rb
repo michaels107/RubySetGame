@@ -22,6 +22,17 @@ def same_or_dif?(card_arr)
   card_arr.uniq.size != 2
 end
 
+# Author: Reema Gupta
+# # method to count the number of  valid sets found depending on the number of  times you have played
+
+$count=0
+def setCount()
+  $count=$count+1
+  print "the total number of sets found : "
+  puts $count
+end
+
+
 # Author: Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
 # Debugged 5/27/2020 By Duytan Tran: Modified value passed in isSet? to be an array
@@ -66,6 +77,7 @@ while play
   selection = select_cards(tabled_cards)
   if isSet?(selection)
     puts 'That was a valid set!'
+    c=setCount
   else
     puts 'The cards selected were not a valid set, try another selection of cards.'
   end
