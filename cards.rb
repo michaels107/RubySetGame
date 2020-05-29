@@ -38,7 +38,7 @@ class Cards
   def print_base_deck
     puts "Base deck: "
     @base_deck.reduce 0 do |i, card|
-      puts if i != 0 && i % 10 == 0
+      puts if i != 0 && i % 5 == 0
       print "#{card}\t"
       i + 1
       end
@@ -52,7 +52,7 @@ class Cards
   def print_play_deck
     puts "Play deck: "
     @play_deck.reduce 0 do |i, card|
-      puts if i != 0 && i % 10 == 0
+      puts if i != 0 && i % 5 == 0
       print "#{card}\t"
       i + 1 
     end
@@ -116,14 +116,14 @@ class Visualized < Cards
       case card[3]
       when '1' then symbolized = symbolized.colorize(:red)
       when '2' then symbolized = symbolized.colorize(:green)
-      else symbolized = symbolized.colorize(:purple)
+      else symbolized = symbolized.colorize(:blue)
       end
       
       #Concatenate symbolized version at the end of each card
-      card = symbolized
+      card += symbolized
 
     end
-    @play_deck = @base_deck.sample(81) #play_deck w/ symbols
+    shuffle #play_deck w/ symbols
   end
 
   # Created 5/28/2020 By Duytan Tran
