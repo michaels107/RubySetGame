@@ -1,6 +1,8 @@
 # Created 5/24/2020 By Duytan Tran
+# Edited 5/29/2020 By Duytan Tran
 # Rspec test cases for the cards.rb source code.
 require_relative 'cards'
+require 'colorize'
 
 # Created 5/24/2020 By Duytan Tran
 # Test case 1: base_deck count
@@ -67,6 +69,47 @@ describe Cards do
 		'3131', '3132', '3133', '3211', '3212', '3213', '3221', '3222', '3223', '3231',
 		'3232', '3233', '3311', '3312', '3313', '3321', '3322', '3323', '3331', '3332', '3333']
       expect(set.play_deck.sort == expSet.sort).to eq true      
+    end
+
+  end
+end
+
+# Created 5/29/2020 By Duytan Tran
+# Test case 5: visualized base_deck count
+describe Cards do
+  context "When creating the base_deck of Visualized class" do
+
+    it "should produce an array count of 81 elements" do
+      set = Visualized.new
+      count = set.base_deck.count
+      expect(count).to eq 81
+    end
+
+  end
+end
+
+# Created 5/29/2020 By Duytan Tran
+# Test case 6: visualized play_deck count
+describe Cards do
+  context "When creating the play_deck of Visualized class" do
+
+    it "should produce an array count of 81 elements" do
+      set = Visualized.new
+      count = set.play_deck.count
+      expect(count).to eq 81
+    end
+
+  end
+end
+
+# Created 5/29/2020 By Duytan Tran
+# Test case 7: visualized play_deck is a permutation of base_deck
+describe Cards do
+  context "When creating the play_deck of Visualized class" do
+
+    it "should produce an permutation of base_deck" do
+      set = Visualized.new
+      expect(set.play_deck.sort == set.base_deck.sort).to eq true      
     end
 
   end
