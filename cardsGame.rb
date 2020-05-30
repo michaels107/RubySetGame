@@ -5,6 +5,7 @@
 # Debugged 5/26/2020 by Duytan Tran
 # Debugged 5/27/2020 by Duytan Tran
 # Edited 5/27/2020 by Reema Gupta
+# Edited 5/30/2020 by Sean Michaels
 
 require_relative 'cards'
 
@@ -72,7 +73,7 @@ def select_cards(cards)
 end
 
 puts 'Welcome to the Set Game!'
-name = Cards.new
+name = Visualized.new
 puts 'Do you want to start playing[Y/N]:'
 ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
@@ -81,10 +82,10 @@ while play
   (0..11).each do |i| # prints the cards into 3 rows with 4 columns
     card = name.play_deck[i]
     tabled_cards.push card
-    puts if i % 4 == 0 && i != 0
-    print card + " "
+    puts "Cards: (#{i-4} - #{i-1})" if i % 4 == 0 && i != 0
+    print "\t%-31s " % [card]
   end
-  puts ''
+  puts 'Cards: (8 - 11)'
   selection = select_cards(tabled_cards)
   if isSet?(selection)
     puts 'That was a valid set!'
