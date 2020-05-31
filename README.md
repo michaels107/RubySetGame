@@ -10,3 +10,4 @@
 ### Contributions
 * Cards class (cards.rb) & Cards class testing: Duytan Tran
 * setCount, putCard method and code for removing valid set(cardsGame.rb), Timer(timer.rb)  : Reema Gupta
+* Main game functionality, plus some methods : Sean Michaels
