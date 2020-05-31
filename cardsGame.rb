@@ -36,16 +36,16 @@ end
 
 # Author: Reema Gupta
 # Created on 5/27/2020
+# Edited on 5/31/2020 by Sean Michaels : changed the parameter to contain a integer that would count for current game sets found
 # method to count the number of  valid sets found depending on the number of  times you have played
 
-$count=0
-def setCount()
-  $count=$count+1
-  print "the total number of sets found : "
-  puts $count
+def setCount(count)
+  count=count+1
+  puts "the total number of sets found : #{count}"
 end
 # Author: Reema Gupta
 # Created on 5/30/2020
+# Edited on 5/31/2020 by Sean Michaels : fixed printing format
 # Method to add 3 new cards when a valid set is found
 def putCard(card_ar)
   name=Visualized.new
@@ -53,9 +53,31 @@ def putCard(card_ar)
     card = name.play_deck[i]
     card_ar.push card
     puts if i % 4 == 0 && i != 0
+    print "\t#{i}) %-39s " % card[4, 20]
 
   end
   end
+
+# Author: Sean Michaels
+# Created on 5/31/2020
+# Method to display high scores
+def high_score (count, top_list)
+  puts "Do you want to save your score to the current High Score?[Y/N]"
+
+  if gets.chomp.eql? 'Y'
+    print 'Please enter name:'
+    name = gets.chomp
+    top_list.store(name, count)
+  end
+
+  scores_names = top_list.sort { |k, v | k[1] <=> v[1] }.reverse
+  puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+  puts "             HIGH SCORE           "
+  (0..scores_names.length-1).each do |i|
+    puts "#{i+1}.)  %-20s --- #{scores_names[i][1]}  " % scores_names[i][0]
+  end
+  puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+end
 
 
 
@@ -98,6 +120,8 @@ print 'Do you want to start playing[Y/N]:'
 ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
 tabled_cards = []
+count = 0
+high_score_list = Hash.new
   if play
   (0..11).each do |i| # prints the cards into 3 rows with 4 columns
     card = name.play_deck[i]
@@ -109,7 +133,7 @@ tabled_cards = []
   selection = select_cards(tabled_cards)
   if isSet?(selection)
     puts 'That was a valid set!'
-    c=setCount
+    count = setCount(count)
     tabled_cards=tabled_cards-selection
     putCard(tabled_cards)
     puts(tabled_cards)
@@ -117,5 +141,8 @@ tabled_cards = []
     puts 'The cards selected were not a valid set, try another selection of cards.'
 
   end
+
+
+  high_score(count, high_score_list)# When game has finished will display current high score
 
 end
