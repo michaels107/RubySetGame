@@ -6,6 +6,7 @@
 # Debugged 5/27/2020 by Duytan Tran
 # Edited 5/27/2020 by Reema Gupta
 # Edited 5/30/2020 by Sean Michaels
+# Edited 5/30/2020 By Duytan Tran
 
 require_relative 'cards'
 
@@ -48,6 +49,7 @@ end
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
 # Debugged 5/27/2020 By Duytan Tran: Modified value passed in isSet? to be an array
 # Edited 5/27/2020 By Reema Gupta: Added the setCount Method Call
+# Debugged 5/30/2020 By Duytan Tran: Fixed returning array to be elements of parameter cards
 # Method to ask the user for 3 cards to see if they're a set.
 def select_cards(cards)
   puts 'Please select 3 cards for your chosen set.'
@@ -69,12 +71,12 @@ def select_cards(cards)
     printf('Third card: ')
     card_three = gets.chomp
   end
-  [card_one, card_two, card_three]
+  [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
 end
 
 puts 'Welcome to the Set Game!'
 name = Visualized.new
-puts 'Do you want to start playing[Y/N]:'
+print 'Do you want to start playing[Y/N]:'
 ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
 tabled_cards = []
@@ -82,10 +84,10 @@ while play
   (0..11).each do |i| # prints the cards into 3 rows with 4 columns
     card = name.play_deck[i]
     tabled_cards.push card
-    puts "Cards: (#{i-4} - #{i-1})" if i % 4 == 0 && i != 0
-    print "\t%-31s " % [card]
+    puts if i % 4 == 0 && i != 0
+    print "\t#{i}) %-39s " % card[4, 20]
   end
-  puts 'Cards: (8 - 11)'
+  puts
   selection = select_cards(tabled_cards)
   if isSet?(selection)
     puts 'That was a valid set!'
@@ -94,7 +96,7 @@ while play
     puts 'The cards selected were not a valid set, try another selection of cards.'
   end
 
-  puts 'Do you want to play again[Y/N]:' # for the user to replay
+  print 'Do you want to play again[Y/N]:' # for the user to replay
   ask = gets.chomp
   play = ask.eql? 'Y'
 end

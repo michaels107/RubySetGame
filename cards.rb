@@ -1,12 +1,13 @@
 # Created 5/22/2020 By Duytan Tran
 # Edited 5/26/2020 By Duytan Tran
 # Edited 5/28/2020 By Duytan Tran
-require 'colorize'
+# Edited 5/30/2020 By Duytan Tran
 =begin
 Class that generates two decks of 81 unique cards, one base-deck
 and one play-deck. The base deck contains an array of all 81 unique cards and
 the play-deck is a shuffled version of the based deck. 
 =end
+require 'colorize'
 class Cards
 
   # Created 5/22/2020 By Duytan Tran
@@ -20,16 +21,10 @@ class Cards
   end
 
   # Created 5/22/2020 By Duytan Tran
-  # Allows access to the baseDeck
-  def base_deck
-    @base_deck
-  end
-
-  # Created 5/22/2020 By Duytan Tran
-  # Allows access to the play_deck
-  def play_deck
-    @play_deck
-  end
+  # Edited 5/30/2020 By Duytan Tran: Reimplemented as attr_accesor(s)
+  # Allows access to the base_deck and play_deck
+  attr_accessor :base_deck
+  attr_accessor :play_deck
 
   # Created 5/22/2020 By Duytan Tran
   # Edited 5/25/2020 By Duytan Tran: Reimplemented to be terse
@@ -62,6 +57,7 @@ class Cards
 end
 
 # Created 5/28/2020 By Duytan Tran
+# Edited 5/30/2020 By Duytan Tran: Improved code readability
 =begin
 Subclass of Cards class that includes visualizations of @base_deck and
 @play_deck. Featuring the use of the gem "colorize", the visualizations
@@ -78,12 +74,10 @@ class Visualized < Cards
     striped_square = "\u25A7".encode('utf-8')
     open_square = "\u25A2".encode('utf-8')
     solid_square = "\u25A0".encode('utf-8')
-
     # Circle shades
     striped_circle = "\u25CD".encode('utf-8')
     open_circle = "\u25EF".encode('utf-8')
     solid_circle = "\u2B24".encode('utf-8')
-
     # Triangle shades
     striped_triangle = "\u2A3A".encode('utf-8')
     open_triangle = "\u25B3".encode('utf-8')
@@ -94,7 +88,7 @@ class Visualized < Cards
     @base_deck.map! do |card|
 
       #Shape and shade cases
-      case card.slice 1, 2
+      case card[1, 2]
       when '11' then symbolized = striped_square
       when '21' then symbolized = striped_circle
       when '31' then symbolized = striped_triangle
@@ -123,12 +117,14 @@ class Visualized < Cards
       card += symbolized
 
     end
-    shuffle #play_deck w/ symbols
+
+    #form play_deck w/ symbols
+    shuffle 
   end
 
   # Created 5/28/2020 By Duytan Tran
   # Shuffles a brand new @play_deck
-  def shuffle
+  def shuffle 
     @play_deck = @base_deck.sample(81)
   end
 
