@@ -7,6 +7,8 @@
 # Edited 5/27/2020 by Reema Gupta
 # Edited 5/30/2020 by Sean Michaels
 # Edited 5/30/2020 By Duytan Tran
+# Edited 5/30/2020 By Duytan Tran
+# Edited 5/31/2020 By Duytan Tran
 
 require_relative 'cards'
 
@@ -42,6 +44,19 @@ def setCount()
   print "the total number of sets found : "
   puts $count
 end
+# Author: Reema Gupta
+# Created on 5/30/2020
+# Method to add 3 new cards when a valid set is found
+def putCard(card_ar)
+  name=Visualized.new
+  (9..11).each do |i|
+    card = name.play_deck[i]
+    card_ar.push card
+    puts if i % 4 == 0 && i != 0
+
+  end
+  end
+
 
 
 # Author: Sean Michaels
@@ -49,7 +64,10 @@ end
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
 # Debugged 5/27/2020 By Duytan Tran: Modified value passed in isSet? to be an array
 # Edited 5/27/2020 By Reema Gupta: Added the setCount Method Call
+# Edited 5/30/2020 By Sean Michaels:Changed the representation of cards to include the visualized format
 # Debugged 5/30/2020 By Duytan Tran: Fixed returning array to be elements of parameter cards
+# Edited 5/31/2020 By Reema Gupta: Added putCard Method to push 3 cards in when a valid set is found
+# Edited 5/31/2020 By Reema Gupta:Included the code for removing a valid set
 # Method to ask the user for 3 cards to see if they're a set.
 def select_cards(cards)
   puts 'Please select 3 cards for your chosen set.'
@@ -80,7 +98,7 @@ print 'Do you want to start playing[Y/N]:'
 ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
 tabled_cards = []
-while play
+  if play
   (0..11).each do |i| # prints the cards into 3 rows with 4 columns
     card = name.play_deck[i]
     tabled_cards.push card
@@ -92,11 +110,12 @@ while play
   if isSet?(selection)
     puts 'That was a valid set!'
     c=setCount
+    tabled_cards=tabled_cards-selection
+    putCard(tabled_cards)
+    puts(tabled_cards)
   else
     puts 'The cards selected were not a valid set, try another selection of cards.'
+
   end
 
-  print 'Do you want to play again[Y/N]:' # for the user to replay
-  ask = gets.chomp
-  play = ask.eql? 'Y'
 end
