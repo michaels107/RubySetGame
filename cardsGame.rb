@@ -114,29 +114,29 @@ def select_cards(cards)
   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
 end
 
+#Main
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
 ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
-tabled_cards = []
+t_cards = name.tabled_cards
 count = 0
 high_score_list = Hash.new
   if play
-  (0..11).each do |i| # prints the cards into 3 rows with 4 columns
-    card = name.play_deck[i]
-    tabled_cards.push card
+    t_cards.each_index { |i| # prints the cards into 3 rows with 4 columns
+    card = t_cards[i]
     puts if i % 4 == 0 && i != 0
     print "\t#{i}) %-39s " % card[4, 20]
-  end
+    }
   puts
-  selection = select_cards(tabled_cards)
+  selection = select_cards(t_cards)
   if isSet?(selection)
     puts 'That was a valid set!'
     count = setCount(count)
-    tabled_cards=tabled_cards-selection
-    putCard(tabled_cards)
-    puts(tabled_cards)
+    t_cards=t_cards-selection
+    putCard(t_cards)
+    puts(t_cards)
   else
     puts 'The cards selected were not a valid set, try another selection of cards.'
 
