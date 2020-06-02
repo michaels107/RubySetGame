@@ -115,3 +115,9 @@ describe Cards do
   end
 end
 
+# Created 6/2/2020 by Caroline Wheeler
+# Test case 8: Tests allSets method with random table deck
+describe Cards do
+
+end
+

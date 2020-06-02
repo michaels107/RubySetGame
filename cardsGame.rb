@@ -39,11 +39,11 @@ end
 # Created on 5/27/2020
 # Edited on 5/31/2020 by Sean Michaels : changed the parameter to contain a integer that would count for current game sets found
 # method to count the number of  valid sets found depending on the number of  times you have played
-
 def setCount(count)
   count+=1
   puts "the total number of sets found : #{count}"
 end
+
 # Author: Reema Gupta
 # Created on 5/30/2020
 # Edited on 5/31/2020 by Sean Michaels : fixed printing format
@@ -123,6 +123,7 @@ ask = gets.chomp  # checks if the user wants to play the game, used later for re
 play = ask.eql? 'Y'
 tabled_cards = []
 count = 0
+all_sets = []
 high_score_list = {}
 if play
 (0..11).each do |i| # prints the cards into 3 rows with 4 columns
@@ -131,6 +132,8 @@ if play
   puts if (i % 4).zero? && i != 0
   print "\t#{i}) %-39s " % card[4, 20]
 end
+puts
+puts "There are #{all_sets.size} possible sets in the given deck."
 puts
 selection = select_cards(tabled_cards)
 if isSet?(selection)

@@ -65,11 +65,11 @@ class Cards
   # Author: Caroline Wheeler
   # Created on 6/2/2020
   # Given an array of table cards returns an array containing all valid sets
-  def allSets(cards)
+  def all_sets
     set_arr = []
-    cards.each do |i|
-      cards.each do |j|
-        cards.each do |k|
+    tabled_cards.each do |i|
+      tabled_cards.each do |j|
+        tabled_cards.each do |k|
           if i != j && j != k && k != i
             set_arr.push [i, j, k] if isSet? [i, j, k]
           end
@@ -78,6 +78,7 @@ class Cards
     end
     set_arr
   end
+
 end
 
 # Created 5/28/2020 By Duytan Tran
