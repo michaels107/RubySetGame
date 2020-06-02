@@ -61,6 +61,23 @@ class Cards
     (0..11).each {|i|@tabled_deck.push(@play_deck[i]) }
     @tabled_deck
   end
+
+  # Author: Caroline Wheeler
+  # Created on 6/2/2020
+  # Given an array of table cards returns an array containing all valid sets
+  def allSets(cards)
+    set_arr = []
+    cards.each do |i|
+      cards.each do |j|
+        cards.each do |k|
+          if i != j && j != k && k != i
+            set_arr.push [i, j, k] if isSet? [i, j, k]
+          end
+        end
+      end
+    end
+    set_arr
+  end
 end
 
 # Created 5/28/2020 By Duytan Tran
@@ -133,23 +150,6 @@ class Visualized < Cards
   # Shuffles a brand new @play_deck
   def shuffle
     @play_deck = @base_deck.sample(81)
-  end
-
-  # Author: Caroline Wheeler
-  # Created on 6/2/2020
-  # Given an array of table cards returns an array containing all valid sets
-  def allSets(cards)
-    set_arr = []
-    cards.each do |i|
-      cards.each do |j|
-        cards.each do |k|
-          if i != j && j != k && k != i
-            set_arr.push [i, j, k] if isSet? [i, j, k]
-          end
-        end
-      end
-    end
-    set_arr
   end
 
 end
