@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # File created 5/25/2020 by Sean Michaels
 # Edited 5/25/2020 by Sean Michaels
 # Edited 5/26/2020 by Caroline Wheeler
@@ -40,7 +41,7 @@ end
 # method to count the number of  valid sets found depending on the number of  times you have played
 
 def setCount(count)
-  count=count+1
+  count+=1
   puts "the total number of sets found : #{count}"
 end
 # Author: Reema Gupta
@@ -62,7 +63,7 @@ def putCard(card_ar)
 # Created on 5/31/2020
 # Method to display high scores
 def high_score (count, top_list)
-  puts "Do you want to save your score to the current High Score?[Y/N]"
+  puts 'Do you want to save your score to the current High Score?[Y/N]'
 
   if gets.chomp.eql? 'Y'
     print 'Please enter name:'
@@ -71,12 +72,12 @@ def high_score (count, top_list)
   end
 
   scores_names = top_list.sort { |k, v | k[1] <=> v[1] }.reverse
-  puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-  puts "             HIGH SCORE           "
+  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+  puts '             HIGH SCORE           '
   (0..scores_names.length-1).each do |i|
     puts "#{i+1}.)  %-20s --- #{scores_names[i][1]}  " % scores_names[i][0]
   end
-  puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
 end
 
 
@@ -90,6 +91,7 @@ end
 # Debugged 5/30/2020 By Duytan Tran: Fixed returning array to be elements of parameter cards
 # Edited 5/31/2020 By Reema Gupta: Added putCard Method to push 3 cards in when a valid set is found
 # Edited 5/31/2020 By Reema Gupta:Included the code for removing a valid set
+# Edited 6/2/2020 By Caroline: Changed some syntax
 # Method to ask the user for 3 cards to see if they're a set.
 def select_cards(cards)
   puts 'Please select 3 cards for your chosen set.'
@@ -121,28 +123,28 @@ ask = gets.chomp  # checks if the user wants to play the game, used later for re
 play = ask.eql? 'Y'
 tabled_cards = []
 count = 0
-high_score_list = Hash.new
-  if play
-  (0..11).each do |i| # prints the cards into 3 rows with 4 columns
-    card = name.play_deck[i]
-    tabled_cards.push card
-    puts if i % 4 == 0 && i != 0
-    print "\t#{i}) %-39s " % card[4, 20]
-  end
-  puts
-  selection = select_cards(tabled_cards)
-  if isSet?(selection)
-    puts 'That was a valid set!'
-    count = setCount(count)
-    tabled_cards=tabled_cards-selection
-    putCard(tabled_cards)
-    puts(tabled_cards)
-  else
-    puts 'The cards selected were not a valid set, try another selection of cards.'
+high_score_list = {}
+if play
+(0..11).each do |i| # prints the cards into 3 rows with 4 columns
+  card = name.play_deck[i]
+  tabled_cards.push card
+  puts if (i % 4).zero? && i != 0
+  print "\t#{i}) %-39s " % card[4, 20]
+end
+puts
+selection = select_cards(tabled_cards)
+if isSet?(selection)
+  puts 'That was a valid set!'
+  count = setCount(count)
+  tabled_cards-=selection
+  putCard(tabled_cards)
+  puts(tabled_cards)
+else
+  puts 'The cards selected were not a valid set, try another selection of cards.'
 
-  end
+end
 
 
-  high_score(count, high_score_list)# When game has finished will display current high score
+high_score(count, high_score_list) # When game has finished will display current high score
 
 end
