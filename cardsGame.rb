@@ -20,6 +20,7 @@ require_relative 'cards'
 
 # returns true if given array is a set, and false if not
 def isSet?(card_arr)
+  return true
   return false if card_arr.size != 3
 
   color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
@@ -38,10 +39,12 @@ end
 # Created on 5/27/2020
 # Edited on 5/31/2020 by Sean Michaels : changed the parameter to contain a integer that would count for current game sets found
 # method to count the number of  valid sets found depending on the number of  times you have played
+# Edited on 6/2/2020
 
 def setCount(count)
   count=count+1
   puts "the total number of sets found : #{count}"
+  count
 end
 # Author: Reema Gupta
 # Created on 5/30/2020
