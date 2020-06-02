@@ -20,7 +20,6 @@ require_relative 'cards'
 
 # returns true if given array is a set, and false if not
 def isSet?(card_arr)
-  return true
   return false if card_arr.size != 3
 
   color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
@@ -39,12 +38,10 @@ end
 # Created on 5/27/2020
 # Edited on 5/31/2020 by Sean Michaels : changed the parameter to contain a integer that would count for current game sets found
 # method to count the number of  valid sets found depending on the number of  times you have played
-# Edited on 6/2/2020
 
 def setCount(count)
   count=count+1
   puts "the total number of sets found : #{count}"
-  count
 end
 # Author: Reema Gupta
 # Created on 5/30/2020
@@ -117,29 +114,29 @@ def select_cards(cards)
   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
 end
 
-#Main
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
 ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
-t_cards = name.tabled_cards
+tabled_cards = []
 count = 0
 high_score_list = Hash.new
   if play
-    t_cards.each_index { |i| # prints the cards into 3 rows with 4 columns
-    card = t_cards[i]
+  (0..11).each do |i| # prints the cards into 3 rows with 4 columns
+    card = name.play_deck[i]
+    tabled_cards.push card
     puts if i % 4 == 0 && i != 0
     print "\t#{i}) %-39s " % card[4, 20]
-    }
+  end
   puts
-  selection = select_cards(t_cards)
+  selection = select_cards(tabled_cards)
   if isSet?(selection)
     puts 'That was a valid set!'
     count = setCount(count)
-    t_cards=t_cards-selection
-    putCard(t_cards)
-    puts(t_cards)
+    tabled_cards=tabled_cards-selection
+    putCard(tabled_cards)
+    puts(tabled_cards)
   else
     puts 'The cards selected were not a valid set, try another selection of cards.'
 

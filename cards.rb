@@ -6,7 +6,7 @@
 =begin
 Class that generates two decks of 81 unique cards, one base-deck
 and one play-deck. The base deck contains an array of all 81 unique cards and
-the play-deck is a shuffled version of the based deck. 
+the play-deck is a shuffled version of the based deck.
 =end
 require 'colorize'
 class Cards
@@ -51,7 +51,7 @@ class Cards
     @play_deck.reduce 0 do |i, card|
       puts if i != 0 && i % 5 == 0
       print "#{card}\t"
-      i + 1 
+      i + 1
     end
     puts
   end
@@ -69,7 +69,7 @@ end
 Subclass of Cards class that includes visualizations of @base_deck and
 @play_deck. Featuring the use of the gem "colorize", the visualizations
 combine unicode characters with colors that form the shape, shading,
-color, and number properties of the Set card game. Also includes a method 
+color, and number properties of the Set card game. Also includes a method
 that reshuffles @play_deck.
 =end
 class Visualized < Cards
@@ -119,21 +119,40 @@ class Visualized < Cards
       when '2' then symbolized = symbolized.colorize(:green)
       else symbolized = symbolized.colorize(:blue)
       end
-      
+
       #Concatenate symbolized version at the end of each card
       card += symbolized
 
     end
 
     #form play_deck w/ symbols
-    shuffle 
+    shuffle
   end
 
   # Created 5/28/2020 By Duytan Tran
   # Shuffles a brand new @play_deck
-  def shuffle 
+  def shuffle
     @play_deck = @base_deck.sample(81)
   end
 
+  # Author: Caroline Wheeler
+  # Created on 6/2/2020
+  # Given an array of table cards returns an array containing all valid sets
+  def allSets(cards)
+    set_arr = []
+    cards.each do |i|
+      cards.each do |j|
+        cards.each do |k|
+          if i != j && j != k && k != i
+            set_arr.push [i, j, k] if isSet? [i, j, k]
+          end
+        end
+      end
+    end
+    set_arr
+  end
+
 end
+
+
 

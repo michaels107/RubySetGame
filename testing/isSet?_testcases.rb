@@ -1,8 +1,10 @@
 # Author: Caroline Wheeler
 # 5/26/2020
 
+require 'cardsGame'
+
 # Is a set
-def isSet_test1
+def Test1
 puts 'isSet? test1'
 card1 = %w[green oval one empty]
 card2= %w[green diamond one shaded]
@@ -12,7 +14,7 @@ puts result
 end
 
 # Not a set
-def isSet_test1
+def isSet_test2?
   puts 'isSet? test1'
   card1 = %w[green oval one empty]
   card2= %w[green oval one shaded]
