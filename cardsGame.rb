@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # File created 5/25/2020 by Sean Michaels
 # Edited 5/25/2020 by Sean Michaels
 # Edited 5/26/2020 by Caroline Wheeler
@@ -9,6 +11,7 @@
 # Edited 5/30/2020 By Duytan Tran
 # Edited 5/30/2020 By Duytan Tran
 # Edited 5/31/2020 By Duytan Tran
+# Edited 6/2/2020 By Sean Michaels
 
 require_relative 'cards'
 
@@ -20,7 +23,6 @@ require_relative 'cards'
 
 # returns true if given array is a set, and false if not
 def isSet?(card_arr)
-  return true
   return false if card_arr.size != 3
 
   color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
@@ -42,47 +44,65 @@ end
 # Edited on 6/2/2020
 
 def setCount(count)
-  count=count+1
+  count += 1
   puts "the total number of sets found : #{count}"
   count
 end
+
 # Author: Reema Gupta
 # Created on 5/30/2020
 # Edited on 5/31/2020 by Sean Michaels : fixed printing format
 # Method to add 3 new cards when a valid set is found
 def putCard(card_ar)
-  name=Visualized.new
+  name = Visualized.new
   (9..11).each do |i|
     card = name.play_deck[i]
     card_ar.push card
     puts if i % 4 == 0 && i != 0
     print "\t#{i}) %-39s " % card[4, 20]
-
   end
   end
 
 # Author: Sean Michaels
 # Created on 5/31/2020
+# Edited on 6/2/2020 by Sean Michaels : Edited it to either create a .txt file or read from .txt file thats in the directory
 # Method to display high scores
-def high_score (count, top_list)
-  puts "Do you want to save your score to the current High Score?[Y/N]"
+#
+def high_score(count, top_list)
+  puts 'Do you want to save your score to the current High Score?[Y/N]'
 
   if gets.chomp.eql? 'Y'
-    print 'Please enter name:'
-    name = gets.chomp
-    top_list.store(name, count)
-  end
+    puts 'Do you have a high score file?[Y/N]'
+    if gets.chomp.eql? 'Y'
+      print 'Please enter your name (One Word):'
+      player = gets.chomp
+      print 'Please enter file name plus extension:'
+      file_name = gets.chomp
+      file = File.open(file_name, 'a') {|f| f.write "#{player} #{count}\n"}
+      File.open(file_name, "r") do |f|
+        f.each_line do |line|
+          player_score = line.split("\n")
+          ps = player_score[0].split(" ")
+          top_list.store(ps[0], ps[1])
+        end
+      end
+    else #empty
 
-  scores_names = top_list.sort { |k, v | k[1] <=> v[1] }.reverse
-  puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-  puts "             HIGH SCORE           "
-  (0..scores_names.length-1).each do |i|
-    puts "#{i+1}.)  %-20s --- #{scores_names[i][1]}  " % scores_names[i][0]
+      print 'Please enter your name (One Word):'
+      player = gets.chomp
+      print 'Please enter name for the file plus a .txt extension:'
+      file = File.open(gets.chomp, 'w') {|f| f.write "#{player} #{count}\n" }
+      top_list.store(player, count)
+    end
+    scores_names = top_list.sort { |k, v| k[1] <=> v[1] }.reverse
+    puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+    puts '             HIGH SCORE           '
+    (0..scores_names.length - 1).each do |i|
+      puts "#{i + 1}.)  %-20s --- #{scores_names[i][1]}  " % scores_names[i][0]
+    end
   end
-  puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
 end
-
-
 
 # Author: Sean Michaels
 # Created 5/26/2017 By Sean Michaels
@@ -117,27 +137,27 @@ def select_cards(cards)
   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
 end
 
-#Main
+# Main
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
-ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
+ask = gets.chomp # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
 t_cards = name.tabled_cards
 count = 0
-high_score_list = Hash.new
-  if play
-    t_cards.each_index { |i| # prints the cards into 3 rows with 4 columns
+high_score_list = {}
+if play
+  t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
     card = t_cards[i]
     puts if i % 4 == 0 && i != 0
     print "\t#{i}) %-39s " % card[4, 20]
-    }
+  end
   puts
   selection = select_cards(t_cards)
   if isSet?(selection)
     puts 'That was a valid set!'
     count = setCount(count)
-    t_cards=t_cards-selection
+    t_cards -= selection
     putCard(t_cards)
     puts(t_cards)
   else
@@ -145,7 +165,6 @@ high_score_list = Hash.new
 
   end
 
-
-  high_score(count, high_score_list)# When game has finished will display current high score
+  high_score(count, high_score_list) # When game has finished will display current high score
 
 end
