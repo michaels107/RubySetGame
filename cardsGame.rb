@@ -7,10 +7,13 @@
 # Edited 5/27/2020 by Reema Gupta
 # Edited 5/30/2020 by Sean Michaels
 # Edited 5/30/2020 By Duytan Tran
-# Edited 5/30/2020 By Duytan Tran
-# Edited 5/31/2020 By Duytan Tran
+# Edited 5/30/2020 By Reema Gupta
+# Edited 5/31/2020 By Reema Gupta
+# Edited 5/31/2020 By Sean Michaels
+# Edited 6/4/2020 By Reema Gupta
 
 require_relative 'cards'
+require 'time'
 
 # 2 methods below determine if a given set of three cards is a true set
 #
@@ -18,6 +21,7 @@ require_relative 'cards'
 # Created on 5/26/2020
 # returns true if given array is a set, and false if not
 def isSet?(card_arr)
+  return true
   return false if card_arr.size != 3
 
   color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
@@ -46,18 +50,18 @@ end
 # Author: Reema Gupta
 # Created on 5/30/2020
 # Edited on 5/31/2020 by Sean Michaels : fixed printing format
+# Edited on 06/04/2020 by Reema Gupta: using putcard method from class (some errors need to be fixed)
 # Method to add 3 new cards when a valid set is found
-def putCard(card_ar)
+def putCard(t_card)
   name = Visualized.new
-  (9..11).each do |i|
-    card = name.play_deck[i]
-    card_ar.push card
+  t_card = name.put_cards
+  t_card.each_index do |i|
+    card = t_card[i]
     puts if i % 4 == 0 && i != 0
     print "\t#{i}) %-39s " % card[4, 20]
-
   end
+  return (t_card)
   end
-
 # Created on 6/2/202 by Sean Michaels
 # Edited on 6/3/2020 by Sean Michaels : Restoring deleted code
 # Method to display high scores
@@ -243,6 +247,16 @@ def allSets(cards)
   set_arr
 end
 
+
+$final=Time.now
+def end_time(user)
+  $final = Time.now + user
+end
+def time_remaining
+  remaining = $final - Time.now
+end
+
+
 # Author: Sean Michaels
 # Created 5/26/2017 By Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
@@ -278,9 +292,10 @@ def select_cards(cards)
       printf('Third card: ')
       card_three = gets.chomp
    end
-   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
+
   end
-  return [card_one]
+  [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
+
 end
 
 
@@ -294,7 +309,6 @@ t_cards = name.tabled_cards
 count = 0
 all_sets = []
 high_score_list = {}
-
 print 'Would you like a tutorial? [Y/N]'
 tutorial if gets.chomp.eql? 'Y'
 
@@ -314,9 +328,9 @@ while play
     if isSet?(selection)
       puts 'That was a valid set!'
       count = setCount(count)
-      tabled_cards -= selection
-      putCard(tabled_cards)
-      puts(tabled_cards)
+      t_cards = t_cards-selection
+      putCard(t_cards)
+
    else
     puts 'The cards selected were not a valid set, try another selection of cards.'
    end
@@ -324,5 +338,7 @@ while play
     play = false
   end
 end
+
+
 
 high_score(count, high_score_list) # When game has finished will display current high score

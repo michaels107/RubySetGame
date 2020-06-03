@@ -19,6 +19,8 @@ class Cards
     @base_deck.map!(&:join)
     @play_deck = @base_deck.sample(81)
     @tabled_deck = []
+    @replaced_deck = []
+
   end
 
   # Created 5/22/2020 By Duytan Tran
@@ -56,8 +58,14 @@ class Cards
   end
 
   # Created 6/2/202 By Sean Michaels
+
   def tabled_cards
     (0..11).each { |i| @tabled_deck.push(@play_deck[i]) }
+    @tabled_deck
+  end
+  # Created 6/03/2020 By Reema Gupta
+  def put_cards
+    (9..11).each { |i| @tabled_deck.push(@play_deck[i]) }
     @tabled_deck
   end
 
