@@ -209,6 +209,23 @@ def tutorial
   bad_examples deck.base_deck
 end
 
+# Author: Caroline Wheeler
+# Created on 6/2/2020
+# Given an array of table cards returns an array containing all valid sets
+def allSets(cards)
+  set_arr = []
+  cards.each do |i|
+    cards.each do |j|
+      cards.each do |k|
+        if i != j && j != k && k != i
+          set_arr.push [i, j, k] if isSet? [i, j, k]
+        end
+      end
+    end
+  end
+  set_arr
+end
+
 # Author: Sean Michaels
 # Created 5/26/2017 By Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
@@ -263,7 +280,8 @@ if play
     print "\t#{i}) %-39s " % card[4, 20]
   end
   puts
-  puts "There are #{all_sets.size} possible sets in the given deck."
+  all = allSets tabled_cards
+  puts "There are #{all.size} possible sets in the given deck."
   puts
   selection = select_cards(tabled_cards)
   if isSet?(selection)
