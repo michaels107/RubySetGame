@@ -88,30 +88,47 @@ def bad_examples(deck)
 
 end
 
+# Author: Caroline Wheeler
+# Created on 6/3/2020
+# Displays an example of a valid set.
 def valid1(deck)
   print "\t#{1}) %-39s " % deck[12][4, 20]
   print "\t#{2}) %-39s " % deck[9][4, 20]
   print "\t#{3}) %-39s " % deck[15][4, 20]
+  puts'same color - same number - same shape - dif shade'
   puts
 end
 
+# Author: Caroline Wheeler
+# Created on 6/3/2020
+# Displays an example of a valid set.
 def valid2(deck)
   print "\t#{1}) %-39s " % deck[6][4, 20]
   print "\t#{2}) %-39s " % deck[34][4, 20]
   print "\t#{3}) %-39s " % deck[62][4, 20]
+  puts 'dif color - dif number - same shape - same shade'
+  puts
 end
 
+# Author: Caroline Wheeler
+# Created on 6/3/2020
+# Displays an example of a valid set.
 def valid3(deck)
   print "\t#{1}) %-39s " % deck[0][4, 20]
   print "\t#{2}) %-39s " % deck[50][4, 20]
   print "\t#{3}) %-39s " % deck[70][4, 20]
+  puts 'dif color - dif number - dif shape - dif shade'
   puts
 end
 
+# Author: Caroline Wheeler
+# Created on 6/3/2020
+# Displays an example of a valid set.
 def valid4(deck)
   print "\t#{1}) %-39s " % deck[13][4, 20]
   print "\t#{2}) %-39s " % deck[46][4, 20]
   print "\t#{3}) %-39s " % deck[61][4, 20]
+  puts 'same color - dif number - dif shape - dif shade'
   puts
 end
 
