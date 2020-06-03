@@ -59,26 +59,42 @@ def putCard(card_ar)
   end
   end
 
-# Author: Sean Michaels
-# Created on 5/31/2020
 # Method to display high scores
-def high_score (count, top_list)
+def high_score(count, top_list)
   puts 'Do you want to save your score to the current High Score?[Y/N]'
 
   if gets.chomp.eql? 'Y'
-    print 'Please enter name:'
-    name = gets.chomp
-    top_list.store(name, count)
-  end
+    puts 'Do you have a high score file?[Y/N]'
+    if gets.chomp.eql? 'Y'
+      print 'Please enter your name (One Word):'
+      player = gets.chomp
+      print 'Please enter file name plus extension:'
+      file_name = gets.chomp
+      file = File.open(file_name, 'a') {|f| f.write "#{player} #{count}\n"}
+      File.open(file_name, "r") do |f|
+        f.each_line do |line|
+          player_score = line.split("\n")
+          ps = player_score[0].split(" ")
+          top_list.store(ps[0], ps[1])
+        end
+      end
+    else #empty
 
-  scores_names = top_list.sort { |k, v | k[1] <=> v[1] }.reverse
-  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-  puts '             HIGH SCORE           '
-  (0..scores_names.length - 1).each do |i|
-    puts "#{i + 1}.)  %-20s --- #{scores_names[i][1]}  " % scores_names[i][0]
+      print 'Please enter your name (One Word):'
+      player = gets.chomp
+      print 'Please enter name for the file plus a .txt extension:'
+      file = File.open(gets.chomp, 'w') {|f| f.write "#{player} #{count}\n" }
+      top_list.store(player, count)
+    end
+    scores_names = top_list.sort { |k, v| k[1] <=> v[1] }.reverse
+    puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+    puts '             HIGH SCORE           '
+    (0..scores_names.length - 1).each do |i|
+      puts "#{i + 1}.)  %-20s --- #{scores_names[i][1]}  " % scores_names[i][0]
+    end
   end
-  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
 end
+
 
 # Author: Caroline Wheeler
 # Created on 6/3/2020
@@ -265,7 +281,7 @@ name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
 ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
-tabled_cards = []
+t_cards = name.tabled_cards
 count = 0
 all_sets = []
 high_score_list = {}
@@ -273,17 +289,16 @@ if play
   print 'Would you like a tutorial? [Y/N]'
   tutorial if gets.chomp.eql? 'Y'
   puts
-  (0..11).each do |i| # prints the cards into 3 rows with 4 columns
-    card = name.play_deck[i]
-    tabled_cards.push card
-    puts if (i % 4).zero? && i != 0
+  t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
+    card = t_cards[i]
+    puts if i % 4 == 0 && i != 0
     print "\t#{i}) %-39s " % card[4, 20]
   end
   puts
-  all = allSets tabled_cards
+  all = allSets t_cards
   puts "There are #{all.size} possible sets in the given deck."
   puts
-  selection = select_cards(tabled_cards)
+  selection = select_cards(t_cards)
   if isSet?(selection)
     puts 'That was a valid set!'
     count = setCount(count)
