@@ -59,6 +59,8 @@ def putCard(card_ar)
   end
   end
 
+# Created on 6/2/202 by Sean Michaels
+# Edited on 6/3/2020 by Sean Michaels : Restoring deleted code
 # Method to display high scores
 def high_score(count, top_list)
   puts 'Do you want to save your score to the current High Score?[Y/N]'
@@ -252,30 +254,38 @@ end
 # Edited 5/31/2020 By Reema Gupta: Added putCard Method to push 3 cards in when a valid set is found
 # Edited 5/31/2020 By Reema Gupta:Included the code for removing a valid set
 # Edited 6/2/2020 By Caroline: Changed some syntax
+# Edit 6/3/2020 By Sean Michaels : Got it to quit when the user wants and loop many games
 # Method to ask the user for 3 cards to see if they're a set.
 def select_cards(cards)
-  puts 'Please select 3 cards for your chosen set.'
+  puts 'Please select 3 cards for your chosen set or enter \'q\' as your first card to quit.'
   printf('First card: ')
   card_one = gets.chomp
-  printf('Second card: ')
-  card_two = gets.chomp
-  printf('Third card: ')
-  card_three = gets.chomp
-
-  while card_one.eql?(card_three) || card_one.eql?(card_two) || card_two.eql?(card_three)
-
-    puts 'There was a duplicate card selected. Please select non-duplicate cards.'
-    puts 'Please select 3 cards for your chosen set.'
-    printf('First card: ')
-    card_one = gets.chomp
+  if card_one.eql? 'q'
+    puts 'Quiting current game...'
+  else
     printf('Second card: ')
-    card_two = gets.chomp
-    printf('Third card: ')
+   card_two = gets.chomp
+   printf('Third card: ')
     card_three = gets.chomp
+
+   while card_one.eql?(card_three) || card_one.eql?(card_two) || card_two.eql?(card_three)
+
+      puts 'There was a duplicate card selected. Please select non-duplicate cards.'
+      puts 'Please select 3 cards for your chosen set.'
+      printf('First card: ')
+      card_one = gets.chomp
+     printf('Second card: ')
+      card_two = gets.chomp
+      printf('Third card: ')
+      card_three = gets.chomp
+   end
+   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
   end
-  [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
+  return [card_one]
 end
 
+
+# Basically the main
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
@@ -285,9 +295,11 @@ t_cards = name.tabled_cards
 count = 0
 all_sets = []
 high_score_list = {}
-if play
-  print 'Would you like a tutorial? [Y/N]'
-  tutorial if gets.chomp.eql? 'Y'
+
+print 'Would you like a tutorial? [Y/N]'
+tutorial if gets.chomp.eql? 'Y'
+
+while play
   puts
   t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
     card = t_cards[i]
@@ -299,18 +311,19 @@ if play
   puts "There are #{all.size} possible sets in the given deck."
   puts
   selection = select_cards(t_cards)
-  if isSet?(selection)
-    puts 'That was a valid set!'
-    count = setCount(count)
-    tabled_cards -= selection
-    putCard(tabled_cards)
-    puts(tabled_cards)
-  else
+  if !selection[0].eql?'q'
+    if isSet?(selection)
+      puts 'That was a valid set!'
+      count = setCount(count)
+      tabled_cards -= selection
+      putCard(tabled_cards)
+      puts(tabled_cards)
+   else
     puts 'The cards selected were not a valid set, try another selection of cards.'
-
+   end
+  else
+    play = false
   end
-
-
-  high_score(count, high_score_list) # When game has finished will display current high score
-
 end
+
+high_score(count, high_score_list) # When game has finished will display current high score
