@@ -82,10 +82,39 @@ end
 
 # Author: Caroline Wheeler
 # Created on 6/3/2020
+# Displays an example of an invalid set.
+def bad1(deck)
+  print "\t#{1}) %-39s " % deck[34][4, 20]
+  print "\t#{2}) %-39s " % deck[46][4, 20]
+  print "\t#{3}) %-39s " % deck[43][4, 20]
+  puts 'same color - same number - dif shape'
+  puts 'BUT 1 and 3 are both solid, while 2 is striped.'
+  puts 'NOT A SET!!'
+  puts
+end
+
+# Author: Caroline Wheeler
+# Created on 6/3/2020
+# Displays an example of an invalid set.
+def bad2(deck)
+  print "\t#{1}) %-39s " % deck[5][4, 20]
+  print "\t#{2}) %-39s " % deck[50][4, 20]
+  print "\t#{3}) %-39s " % deck[59][4, 20]
+  puts 'same color - dif number - same shade'
+  puts 'BUT 1 and 3 are both squares, while 2 is triangle.'
+  puts 'NOT A SET!!'
+  puts
+end
+
+# Author: Caroline Wheeler
+# Created on 6/3/2020
 # Gives examples of invalid sets.
 def bad_examples(deck)
   puts 'The following are not valid sets:'
-
+  bad1 deck
+  bad2 deck
+  print 'Select enter key when done with examples, and game will begin!!'
+  gets.chomp.eql? "\n"
 end
 
 # Author: Caroline Wheeler
@@ -136,11 +165,13 @@ end
 # Created on 6/3/2020
 # Gives examples of sets.
 def examples(deck)
-  puts 'The following rows are all valid sets:'
+  puts 'The following rows are all examples of valid sets:'
   valid1 deck
   valid2 deck
   valid3 deck
   valid4 deck
+  print 'Select enter key when done with examples.'
+  gets.chomp.eql? "\n"
 end
 
 # Author: Caroline Wheeler
@@ -149,7 +180,7 @@ end
 def rules
   puts 'Press enter for next instruction.'
   puts
-  sleep 0.5
+  sleep 0.3
   puts '12 cards will be laid out. Each card has symbols, which vary in SHAPE, COLOR, NUMBER, and SHADE.'
   gets.chomp.eql?"\n"
   puts 'SHAPES: Circle, Triangle, & Square'
@@ -174,11 +205,6 @@ def tutorial
   puts
   rules
   deck = Visualized.new
-  #(0..81).each do |i|
-  # puts if (i % 4).zero? && i != 0
-  # print "\t#{i}) %-39s " % deck.base_deck[i][4, 20]
-
-  #end
   examples deck.base_deck
   bad_examples deck.base_deck
 end
