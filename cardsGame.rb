@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # File created 5/25/2020 by Sean Michaels
 # Edited 5/25/2020 by Sean Michaels
 # Edited 5/26/2020 by Caroline Wheeler
