@@ -83,32 +83,63 @@ end
 # Author: Caroline Wheeler
 # Created on 6/3/2020
 # Gives examples of invalid sets.
-def bad_examples (deck)
+def bad_examples(deck)
   puts 'The following are not valid sets:'
+
+end
+
+def valid1(deck)
+  print "\t#{1}) %-39s " % deck[12][4, 20]
+  print "\t#{2}) %-39s " % deck[9][4, 20]
+  print "\t#{3}) %-39s " % deck[15][4, 20]
+  puts
+end
+
+def valid2(deck)
+  print "\t#{1}) %-39s " % deck[6][4, 20]
+  print "\t#{2}) %-39s " % deck[34][4, 20]
+  print "\t#{3}) %-39s " % deck[62][4, 20]
+end
+
+def valid3(deck)
+  print "\t#{1}) %-39s " % deck[0][4, 20]
+  print "\t#{2}) %-39s " % deck[50][4, 20]
+  print "\t#{3}) %-39s " % deck[70][4, 20]
+  puts
+end
+
+def valid4(deck)
+  print "\t#{1}) %-39s " % deck[13][4, 20]
+  print "\t#{2}) %-39s " % deck[46][4, 20]
+  print "\t#{3}) %-39s " % deck[61][4, 20]
+  puts
 end
 
 # Author: Caroline Wheeler
 # Created on 6/3/2020
 # Gives examples of sets.
-def examples (deck)
-  puts 'The following are all valid sets:'
-  card = 0
-
+def examples(deck)
+  puts 'The following rows are all valid sets:'
+  valid1 deck
+  valid2 deck
+  valid3 deck
+  valid4 deck
 end
 
 # Author: Caroline Wheeler
 # Created on 6/3/2020
 # Prints the rules of set.
 def rules
-  puts '12 cards will be laid out. Each card has symbols, which vary in SHAPE, COLOR, NUMBER, and SHADE.'
+  puts 'Press enter for next instruction.'
   puts
-  sleep 1.9
+  sleep 0.5
+  puts '12 cards will be laid out. Each card has symbols, which vary in SHAPE, COLOR, NUMBER, and SHADE.'
+  gets.chomp.eql?"\n"
   puts 'SHAPES: Circle, Triangle, & Square'
   puts 'COLORS: Red, Blue, & Green'
   puts 'NUMBERS: One, Two, & Three'
   puts 'SHADES: Empty, Striped, & Solid'
-  puts
-  sleep 2.5
+  gets.chomp.eql?"\n"
   puts 'You will be asked to identify valid sets of 3, which satisfy the following conditions:'
   puts '- They all have the same number or have three different numbers.'
   puts '- They all have the same shape or have three different shapes.'
@@ -126,7 +157,11 @@ def tutorial
   puts
   rules
   deck = Visualized.new
-  print deck.base_deck
+  #(0..81).each do |i|
+  # puts if (i % 4).zero? && i != 0
+  # print "\t#{i}) %-39s " % deck.base_deck[i][4, 20]
+
+  #end
   examples deck.base_deck
   bad_examples deck.base_deck
 end
