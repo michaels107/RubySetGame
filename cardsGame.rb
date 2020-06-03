@@ -28,7 +28,7 @@ def isSet?(card_arr)
   same_or_dif?(color_arr) && same_or_dif?(shape_arr) && same_or_dif?(num_arr) && same_or_dif?(shade_arr)
 end
 
-#Author: Caroline Wheeler
+# Author: Caroline Wheeler
 # Created on 5/26/2020
 # returns true if the arr contains all the same element of all different, false otherwise
 def same_or_dif?(card_arr)
@@ -81,9 +81,16 @@ def high_score (count, top_list)
 end
 
 def rules
-  puts '12 cards will be laid out.'
-  puts 'Each card has symbols, which vary in SHAPE, COLOR, NUMBER, and FILL.'
-
+  puts '12 cards will be laid out. Each card has symbols, which vary in SHAPE, COLOR, NUMBER, and FILL.'
+  puts 'SHAPES: Circle, Triangle, & Square'
+  puts 'COLORS: Red, Blue, & Green'
+  puts 'NUMBERS: One, Two, & Three'
+  puts 'FILLS: Empty, Striped, & Solid'
+  puts 'You will be asked to identify valid sets of 3, which satisfy the following conditions:'
+  puts '- They all have the same number or have three different numbers.'
+  puts '- They all have the same shape or have three different shapes.'
+  puts '- They all have the same shading or have three different shadings.'
+  puts '- They all have the same color or have three different colors.'
 end
 
 # Author: Caroline Wheeler 
