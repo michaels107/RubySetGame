@@ -82,27 +82,54 @@ end
 
 # Author: Caroline Wheeler
 # Created on 6/3/2020
+# Gives examples of invalid sets.
+def bad_examples (deck)
+  puts 'The following are not valid sets:'
+end
+
+# Author: Caroline Wheeler
+# Created on 6/3/2020
+# Gives examples of sets.
+def examples (deck)
+  puts 'The following are all valid sets:'
+  card = 0
+
+end
+
+# Author: Caroline Wheeler
+# Created on 6/3/2020
 # Prints the rules of set.
 def rules
-  puts '12 cards will be laid out. Each card has symbols, which vary in SHAPE, COLOR, NUMBER, and FILL.'
+  puts '12 cards will be laid out. Each card has symbols, which vary in SHAPE, COLOR, NUMBER, and SHADE.'
+  puts
+  sleep 1.9
   puts 'SHAPES: Circle, Triangle, & Square'
   puts 'COLORS: Red, Blue, & Green'
   puts 'NUMBERS: One, Two, & Three'
-  puts 'FILLS: Empty, Striped, & Solid'
+  puts 'SHADES: Empty, Striped, & Solid'
+  puts
+  sleep 2.5
   puts 'You will be asked to identify valid sets of 3, which satisfy the following conditions:'
   puts '- They all have the same number or have three different numbers.'
   puts '- They all have the same shape or have three different shapes.'
   puts '- They all have the same shading or have three different shadings.'
   puts '- They all have the same color or have three different colors.'
+  puts
+  print 'Select enter key when done with instructions.'
+  gets.chomp.eql? "\n"
 end
 
-# Author: Caroline Wheeler 
+# Author: Caroline Wheeler
 # Created 6/3/2020
-# 
+# Runs through rules and examples of how to play.
 def tutorial
+  puts
   rules
+  deck = Visualized.new
+  print deck.base_deck
+  examples deck.base_deck
+  bad_examples deck.base_deck
 end
-
 
 # Author: Sean Michaels
 # Created 5/26/2017 By Sean Michaels
