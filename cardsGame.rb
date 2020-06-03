@@ -80,6 +80,9 @@ def high_score (count, top_list)
   puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
 end
 
+# Author: Caroline Wheeler
+# Created on 6/3/2020
+# Prints the rules of set.
 def rules
   puts '12 cards will be laid out. Each card has symbols, which vary in SHAPE, COLOR, NUMBER, and FILL.'
   puts 'SHAPES: Circle, Triangle, & Square'
