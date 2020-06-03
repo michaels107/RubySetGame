@@ -4,8 +4,8 @@
 require_relative 'cards'
 require 'colorize'
 
-# Created 5/24/2020 By Duytan Tran
-# Test case 3: play_deck count
+# Created 5/24/2020 By Sean Michaels
+# Test case 1: tabled cards method
 describe Cards do
   context "Testing that the tabled deck creating properly" do
 
