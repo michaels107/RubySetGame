@@ -13,12 +13,10 @@
 
 require_relative 'cards'
 
-# Below methods determine if a given set of three cards is a true set
+# 2 methods below determine if a given set of three cards is a true set
+#
 # Author: Caroline Wheeler
 # Created on 5/26/2020
-
-# Let's assume a card looks like this - [green, oval, two, empty]
-
 # returns true if given array is a set, and false if not
 def isSet?(card_arr)
   return false if card_arr.size != 3
@@ -30,6 +28,8 @@ def isSet?(card_arr)
   same_or_dif?(color_arr) && same_or_dif?(shape_arr) && same_or_dif?(num_arr) && same_or_dif?(shade_arr)
 end
 
+#Author: Caroline Wheeler
+# Created on 5/26/2020
 # returns true if the arr contains all the same element of all different, false otherwise
 def same_or_dif?(card_arr)
   card_arr.uniq.size != 2
@@ -40,7 +40,7 @@ end
 # Edited on 5/31/2020 by Sean Michaels : changed the parameter to contain a integer that would count for current game sets found
 # method to count the number of  valid sets found depending on the number of  times you have played
 def setCount(count)
-  count+=1
+  count += 1
   puts "the total number of sets found : #{count}"
 end
 
@@ -49,7 +49,7 @@ end
 # Edited on 5/31/2020 by Sean Michaels : fixed printing format
 # Method to add 3 new cards when a valid set is found
 def putCard(card_ar)
-  name=Visualized.new
+  name = Visualized.new
   (9..11).each do |i|
     card = name.play_deck[i]
     card_ar.push card
@@ -74,12 +74,24 @@ def high_score (count, top_list)
   scores_names = top_list.sort { |k, v | k[1] <=> v[1] }.reverse
   puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
   puts '             HIGH SCORE           '
-  (0..scores_names.length-1).each do |i|
-    puts "#{i+1}.)  %-20s --- #{scores_names[i][1]}  " % scores_names[i][0]
+  (0..scores_names.length - 1).each do |i|
+    puts "#{i + 1}.)  %-20s --- #{scores_names[i][1]}  " % scores_names[i][0]
   end
   puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
 end
 
+def rules
+  puts '12 cards will be laid out.'
+  puts 'Each card has symbols, which vary in SHAPE, COLOR, NUMBER, and FILL.'
+
+end
+
+# Author: Caroline Wheeler 
+# Created 6/3/2020
+# 
+def tutorial
+  rules
+end
 
 
 # Author: Sean Michaels
@@ -126,28 +138,31 @@ count = 0
 all_sets = []
 high_score_list = {}
 if play
-(0..11).each do |i| # prints the cards into 3 rows with 4 columns
-  card = name.play_deck[i]
-  tabled_cards.push card
-  puts if (i % 4).zero? && i != 0
-  print "\t#{i}) %-39s " % card[4, 20]
-end
-puts
-puts "There are #{all_sets.size} possible sets in the given deck."
-puts
-selection = select_cards(tabled_cards)
-if isSet?(selection)
-  puts 'That was a valid set!'
-  count = setCount(count)
-  tabled_cards-=selection
-  putCard(tabled_cards)
-  puts(tabled_cards)
-else
-  puts 'The cards selected were not a valid set, try another selection of cards.'
+  print 'Would you like a tutorial? [Y/N]'
+  tutorial if gets.chomp.eql? 'Y'
+  puts
+  (0..11).each do |i| # prints the cards into 3 rows with 4 columns
+    card = name.play_deck[i]
+    tabled_cards.push card
+    puts if (i % 4).zero? && i != 0
+    print "\t#{i}) %-39s " % card[4, 20]
+  end
+  puts
+  puts "There are #{all_sets.size} possible sets in the given deck."
+  puts
+  selection = select_cards(tabled_cards)
+  if isSet?(selection)
+    puts 'That was a valid set!'
+    count = setCount(count)
+    tabled_cards -= selection
+    putCard(tabled_cards)
+    puts(tabled_cards)
+  else
+    puts 'The cards selected were not a valid set, try another selection of cards.'
 
-end
+  end
 
 
-high_score(count, high_score_list) # When game has finished will display current high score
+  high_score(count, high_score_list) # When game has finished will display current high score
 
 end
