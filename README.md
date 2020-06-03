@@ -17,3 +17,9 @@
 1. Install colorize gem using terminal command: gem install colorize
 2. cd to the file location of cardsGame.rb
 3. Execute Game of Set by using terminal command: ruby cardsGame.rb
+
+### How to run Cards & Visualized Class test cases
+1. install rspec using terminal command: gem install rspec
+2. cd to the file location of cards_spec.rb
+3. Run cards_spec.rb test cases using terminal command: rspec cards_spec.rb
+Note: require 'cards' wouldn't allow use to run cards_spec.rb within the testing folder, hence it is on the same level as cards.rb using require_relative 'cards', the filename for which it is testing
