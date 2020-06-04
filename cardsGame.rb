@@ -225,6 +225,23 @@ def print_all(all)
     print "\t#{i}) %-39s " % all[3][i][4, 20]
   end
 end
+# Created by Sean Michaels and Duytan Tran
+# Checks for duplicate cards in the select cards method.
+def dupes(*cards)
+  card_one, card_two, card_three = *cards
+  while card_one.eql?(card_two) || card_one.eql?(card_three) || card_two.eql?(card_three)
+
+    puts 'Duplicates are not allowed. Please select 3 new cards.'
+    print 'First card: '
+    card_one = gets.chomp
+    print 'Second card: '
+    card_two = gets.chomp
+    print 'Third card: '
+    card_three = gets.chomp
+  end
+  [card_one, card_two, card_three]
+end
+
 # Author: Sean Michaels
 # Created 5/26/2017 By Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
@@ -249,20 +266,21 @@ def select_cards(cards)
     card_two = gets.chomp
     printf('Third card: ')
     card_three = gets.chomp
+    card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
+    unless (0...cards.size) === card_one.to_i && (0...cards.size) === card_three.to_i && (0...cards.size) === card_two.to_i
 
-    while card_one.eql?(card_three) || card_one.eql?(card_two) || card_two.eql?(card_three)
+      puts 'A card choice was found to be invalid. Please select 3 new cards.'
+      print 'First card: '
+      card_one = gets.chomp
+      print 'Second card: '
+      card_two = gets.chomp
+      print 'Third card: '
+      card_three = gets.chomp
 
-       puts 'There was a duplicate card selected. Please select non-duplicate cards.'
-       puts 'Please select 3 cards for your chosen set.'
-       printf('First card: ')
-       card_one = gets.chomp
-       printf('Second card: ')
-       card_two = gets.chomp
-       printf('Third card: ')
-       card_three = gets.chomp
+      card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
+
     end
-
-  end
+    end
   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
 
 end
@@ -280,7 +298,7 @@ t_cards = name.tabled_cards
 print 'Would you like a tutorial? [Y/N]'
 tutorial if gets.chomp.eql? 'Y'
 
-while play
+while play && t_cards.size != 0
   t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
     card = t_cards[i]
     puts if i % 4 == 0 && i != 0
