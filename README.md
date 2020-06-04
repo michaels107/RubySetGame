@@ -12,7 +12,7 @@
   that appends respective colorized ASCII characters to the end of each card, rspec testing (cards_spec.rb): Duytan Tran
 * setCount, putCard method and code for removing valid set(cardsGame.rb), Timer(timer.rb): Reema Gupta
 * Main game functionality, plus some methods: Sean Michaels
-* isSet?, same_or_dif?, allSets in the cards class, and tutorial, which includes 8 helper methods. 
+* isSet?, same_or_dif?, tutorial + 8 helper methods (cardsGame.rb), and allSets (cards.rb) : Caroline Wheeler
 
 ### How to execute
 1. Install colorize gem using terminal command: gem install colorize
