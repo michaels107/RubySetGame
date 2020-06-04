@@ -22,7 +22,6 @@ require 'time'
 # Created on 5/26/2020
 # returns true if given array is a set, and false if not
 def isSet?(card_arr)
-  return true
   return false if card_arr.size != 3
 
   color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
