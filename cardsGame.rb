@@ -227,27 +227,6 @@ def tutorial
   bad_examples deck.base_deck
 end
 
-# Author: Caroline Wheeler
-# Created on 6/2/2020
-# Given an array of table cards returns an array containing all valid sets
-def allSets(cards)
-  set_arr = []
-  cards.each do |i|
-    cards.each do |j|
-      cards.each do |k|
-        if !(i.eql?j) && !(j.eql?k) && !(k.eql?i)
-          set_arr.push [i, j, k] if isSet? [i, j, k]
-        end
-      end
-    end
-  end
-  set_arr
-end
-
-
-
-
-
 def print_all(all)
   (0..all.size).each do |i| # prints the cards into 3 rows with 4 columns
     puts
@@ -277,21 +256,21 @@ def select_cards(cards)
     return ['q']
   else
     printf('Second card: ')
-   card_two = gets.chomp
-   printf('Third card: ')
+    card_two = gets.chomp
+    printf('Third card: ')
     card_three = gets.chomp
 
-   while card_one.eql?(card_three) || card_one.eql?(card_two) || card_two.eql?(card_three)
+    while card_one.eql?(card_three) || card_one.eql?(card_two) || card_two.eql?(card_three)
 
-      puts 'There was a duplicate card selected. Please select non-duplicate cards.'
-      puts 'Please select 3 cards for your chosen set.'
-      printf('First card: ')
-      card_one = gets.chomp
-     printf('Second card: ')
-      card_two = gets.chomp
-      printf('Third card: ')
-      card_three = gets.chomp
-   end
+       puts 'There was a duplicate card selected. Please select non-duplicate cards.'
+       puts 'Please select 3 cards for your chosen set.'
+       printf('First card: ')
+       card_one = gets.chomp
+       printf('Second card: ')
+       card_two = gets.chomp
+       printf('Third card: ')
+       card_three = gets.chomp
+    end
 
   end
   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
@@ -303,7 +282,7 @@ end
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
-ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
+ask = gets.chomp # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
 count = 0
 all_sets = []
@@ -319,7 +298,7 @@ while play
     print "\t#{i}) %-39s " % card[4, 20]
   end
   puts
-  all = allSets t_cards
+  all = name.allSets
   puts "There are #{all.size} possible sets in the given deck."
   puts
   selection = select_cards(t_cards)
