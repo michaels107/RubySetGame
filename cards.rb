@@ -66,9 +66,8 @@ class Cards
   end
   # Created 6/03/2020 By Reema Gupta
   # Edited on 6/3/2020 By Sean Michaels : Changed to a pop and push
-  def put_cards
-    (9..11).each { @tabled_deck.push(@play_deck.pop) }
-    @tabled_deck
+  def put_cards(t_cards)
+    t_cards.push *(@play_deck.pop 3)
   end
 
   # Author: Caroline Wheeler

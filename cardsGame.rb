@@ -22,6 +22,7 @@ require 'time'
 # Created on 5/26/2020
 # returns true if given array is a set, and false if not
 def isSet?(card_arr)
+  return true
   return false if card_arr.size != 3
 
   color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
@@ -46,17 +47,6 @@ def setCount(count)
   count += 1
   puts "the total number of sets found : #{count}"
   count
-end
-
-# Author: Reema Gupta
-# Created on 5/30/2020
-# Edited on 5/31/2020 by Sean Michaels : fixed printing format
-# Edited on 06/04/2020 by Reema Gupta: using putcard method from class (some errors need to be fixed)
-# Edited on 6/4/2020 by Sean Michaels : removed printing out
-# Method to add 3 new cards when a valid set is found
-def putCard
-  name = Visualized.new
-  name.put_cards
 end
 
 # Created on 6/2/202 by Sean Michaels
@@ -307,7 +297,7 @@ while play
       puts 'That was a valid set!'
       count = setCount(count)
       t_cards = t_cards-selection
-      t_cards = t_cards+putCard
+      name.put_cards(t_cards)
 
    else
     puts 'The cards selected were not a valid set, try another selection of cards.'
