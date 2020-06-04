@@ -285,7 +285,6 @@ print 'Do you want to start playing[Y/N]:'
 ask = gets.chomp # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
 count = 0
-all_sets = []
 high_score_list = {}
 t_cards = name.tabled_cards
 print 'Would you like a tutorial? [Y/N]'
@@ -298,7 +297,7 @@ while play
     print "\t#{i}) %-39s " % card[4, 20]
   end
   puts
-  all = name.allSets
+  all = name.allSets t_cards
   puts "There are #{all.size} possible sets in the given deck."
   puts
   selection = select_cards(t_cards)
