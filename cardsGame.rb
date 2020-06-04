@@ -235,18 +235,12 @@ end
 # Given an array of table cards returns an array containing all valid sets
 def allSets(cards)
   set_arr = []
-  cards.each do |i|
-    cards.each do |j|
-      cards.each do |k|
-        if !(i.eql?j) && !(j.eql?k) && !(k.eql?i)
-          set_arr.push [i, j, k] if isSet? [i, j, k]
-        end
-      end
-    end
+  all_comb = cards.combination(3)
+  all_comb.each do |i|
+    set_arr.push [i] if isSet? [i]
   end
   set_arr
 end
-
 
 
 
@@ -279,21 +273,21 @@ def select_cards(cards)
     puts 'Quiting current game...'
   else
     printf('Second card: ')
-   card_two = gets.chomp
-   printf('Third card: ')
+    card_two = gets.chomp
+    printf('Third card: ')
     card_three = gets.chomp
 
-   while card_one.eql?(card_three) || card_one.eql?(card_two) || card_two.eql?(card_three)
+    while card_one.eql?(card_three) || card_one.eql?(card_two) || card_two.eql?(card_three)
 
-      puts 'There was a duplicate card selected. Please select non-duplicate cards.'
-      puts 'Please select 3 cards for your chosen set.'
-      printf('First card: ')
-      card_one = gets.chomp
-     printf('Second card: ')
-      card_two = gets.chomp
-      printf('Third card: ')
-      card_three = gets.chomp
-   end
+       puts 'There was a duplicate card selected. Please select non-duplicate cards.'
+       puts 'Please select 3 cards for your chosen set.'
+       printf('First card: ')
+       card_one = gets.chomp
+       printf('Second card: ')
+       card_two = gets.chomp
+       printf('Third card: ')
+       card_three = gets.chomp
+    end
 
   end
   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
