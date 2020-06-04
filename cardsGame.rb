@@ -11,6 +11,7 @@
 # Edited 5/31/2020 By Reema Gupta
 # Edited 5/31/2020 By Sean Michaels
 # Edited 6/4/2020 By Reema Gupta
+# Edited 6/4/2020 By Sean Michaels
 
 require_relative 'cards'
 require 'time'
@@ -21,7 +22,6 @@ require 'time'
 # Created on 5/26/2020
 # returns true if given array is a set, and false if not
 def isSet?(card_arr)
-  return true
   return false if card_arr.size != 3
 
   color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
@@ -45,23 +45,20 @@ end
 def setCount(count)
   count += 1
   puts "the total number of sets found : #{count}"
+  count
 end
 
 # Author: Reema Gupta
 # Created on 5/30/2020
 # Edited on 5/31/2020 by Sean Michaels : fixed printing format
 # Edited on 06/04/2020 by Reema Gupta: using putcard method from class (some errors need to be fixed)
+# Edited on 6/4/2020 by Sean Michaels : removed printing out
 # Method to add 3 new cards when a valid set is found
-def putCard(t_card)
+def putCard
   name = Visualized.new
-  t_card = name.put_cards
-  t_card.each_index do |i|
-    card = t_card[i]
-    puts if i % 4 == 0 && i != 0
-    print "\t#{i}) %-39s " % card[4, 20]
-  end
-  return (t_card)
-  end
+  name.put_cards
+end
+
 # Created on 6/2/202 by Sean Michaels
 # Edited on 6/3/2020 by Sean Michaels : Restoring deleted code
 # Method to display high scores
@@ -277,6 +274,7 @@ def select_cards(cards)
   card_one = gets.chomp
   if card_one.eql? 'q'
     puts 'Quiting current game...'
+    return ['q']
   else
     printf('Second card: ')
    card_two = gets.chomp
@@ -307,15 +305,14 @@ name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
 ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
-t_cards = name.tabled_cards
 count = 0
 all_sets = []
 high_score_list = {}
+t_cards = name.tabled_cards
 print 'Would you like a tutorial? [Y/N]'
 tutorial if gets.chomp.eql? 'Y'
 
 while play
-  puts
   t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
     card = t_cards[i]
     puts if i % 4 == 0 && i != 0
@@ -331,7 +328,7 @@ while play
       puts 'That was a valid set!'
       count = setCount(count)
       t_cards = t_cards-selection
-      putCard(t_cards)
+      t_cards = t_cards+putCard
 
    else
     puts 'The cards selected were not a valid set, try another selection of cards.'
