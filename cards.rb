@@ -76,15 +76,17 @@ class Cards
   # Author: Caroline Wheeler
   # Created on 6/2/2020
   # Given an array of table cards returns an array containing all valid sets
-  def allSets
+  def allSets(deck)
     set_arr = []
-    all_comb = @tabled_deck.combination(3)
-    all_comb.each do |i|
-      set_arr.push [i] if isSet? [i]
+    all_set = deck.combination(3).to_a
+    all_set.each do |i|
+      set_arr.push(i) if isSet? i
     end
     set_arr
   end
-  end
+
+end
+
 # Created 5/28/2020 By Duytan Tran
 # Edited 5/30/2020 By Duytan Tran: Improved code readability
 # Subclass of Cards class that includes visualizations of @base_deck and
