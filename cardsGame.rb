@@ -241,6 +241,16 @@ def dupes(*cards)
   [card_one, card_two, card_three]
 end
 
+#Created by Sean Michaels and Duytan Tran
+# Prints cards into console
+def print_cards(t_cards)
+  t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
+    card = t_cards[i]
+    puts if i % 4 == 0 && i != 0
+    print "\t#{i}) %-39s " % card[4, 20]
+  end
+  puts
+end
 # Author: Sean Michaels
 # Created 5/26/2017 By Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
@@ -279,7 +289,7 @@ def select_cards(cards)
       card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
 
     end
-    end
+  end
   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
 
 end
@@ -298,20 +308,19 @@ print 'Would you like a tutorial? [Y/N]'
 tutorial if gets.chomp.eql? 'Y'
 
 while play && t_cards.size != 0
-  t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
-    card = t_cards[i]
-    puts if i % 4 == 0 && i != 0
-    print "\t#{i}) %-39s " % card[4, 20]
-  end
-  puts
+  print_cards(t_cards)
   all = name.allSets t_cards
-  if all.size == 1
-  puts "There is 1 possible set in the given deck."
-  else if  all.size > 1
-  puts "There are #{all.size} possible sets in the given deck."
-       else
-         "There are no sets in the given deck - we will add more cards."
-       end
+  while all.length < 1
+
+      puts "There are no sets in the given deck - we will add more cards."
+      name.put_cards(t_cards)
+      print_cards(t_cards)
+      all = name.allSets t_cards
+
+
+  end
+  if  all.size >= 1
+      puts "There are #{all.size} possible set(s) in the given deck."
   end
   puts
   selection = select_cards(t_cards)
@@ -322,9 +331,9 @@ while play && t_cards.size != 0
       t_cards = t_cards-selection
       name.put_cards(t_cards)
 
-   else
-    puts 'The cards selected were not a valid set, try another selection of cards.'
-   end
+    else
+      puts 'The cards selected were not a valid set, try another selection of cards.'
+    end
   else
     play = false
   end
