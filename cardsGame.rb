@@ -248,13 +248,7 @@ def allSets(cards)
 end
 
 
-$final=Time.now
-def end_time(user)
-  $final = Time.now + user
-end
-def time_remaining
-  remaining = $final - Time.now
-end
+
 
 
 # Author: Sean Michaels
