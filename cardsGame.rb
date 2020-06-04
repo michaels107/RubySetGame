@@ -21,7 +21,6 @@ require 'time'
 # Created on 5/26/2020
 # returns true if given array is a set, and false if not
 def isSet?(card_arr)
-  return true
   return false if card_arr.size != 3
 
   color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
@@ -230,21 +229,6 @@ def tutorial
   bad_examples deck.base_deck
 end
 
-# Author: Caroline Wheeler
-# Created on 6/2/2020
-# Given an array of table cards returns an array containing all valid sets
-def allSets(cards)
-  set_arr = []
-  all_comb = cards.combination(3)
-  all_comb.each do |i|
-    set_arr.push [i] if isSet? [i]
-  end
-  set_arr
-end
-
-
-
-
 def print_all(all)
   (0..all.size).each do |i| # prints the cards into 3 rows with 4 columns
     puts
@@ -316,7 +300,7 @@ while play
     print "\t#{i}) %-39s " % card[4, 20]
   end
   puts
-  all = allSets t_cards
+  all =  t_cards
   puts "There are #{all.size} possible sets in the given deck."
   puts
   selection = select_cards(t_cards)

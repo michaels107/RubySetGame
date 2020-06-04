@@ -83,7 +83,7 @@ class Cards
     end
     set_arr
   end
-
+  end
 # Created 5/28/2020 By Duytan Tran
 # Edited 5/30/2020 By Duytan Tran: Improved code readability
 # Subclass of Cards class that includes visualizations of @base_deck and
