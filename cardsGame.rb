@@ -283,7 +283,7 @@ end
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
-ask = gets.chomp  # checks if the user wants to play the game, used later for replay.
+ask = gets.chomp # checks if the user wants to play the game, used later for replay.
 play = ask.eql? 'Y'
 t_cards = name.tabled_cards
 count = 0
@@ -300,7 +300,7 @@ while play
     print "\t#{i}) %-39s " % card[4, 20]
   end
   puts
-  all =  t_cards
+  all = name.allSets
   puts "There are #{all.size} possible sets in the given deck."
   puts
   selection = select_cards(t_cards)
