@@ -238,7 +238,7 @@ def allSets(cards)
   cards.each do |i|
     cards.each do |j|
       cards.each do |k|
-        if i != j && j != k && k != i
+        if !(i.eql?j) && !(j.eql?k) && !(k.eql?i)
           set_arr.push [i, j, k] if isSet? [i, j, k]
         end
       end
@@ -251,6 +251,14 @@ end
 
 
 
+def print_all(all)
+  (0..all.size).each do |i| # prints the cards into 3 rows with 4 columns
+    puts
+    print "\t#{i}) %-39s " % all[1][i][4, 20]
+    print "\t#{i}) %-39s " % all[2][i][4, 20]
+    print "\t#{i}) %-39s " % all[3][i][4, 20]
+  end
+end
 # Author: Sean Michaels
 # Created 5/26/2017 By Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
