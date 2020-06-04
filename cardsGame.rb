@@ -298,7 +298,14 @@ while play
   end
   puts
   all = name.allSets t_cards
+  if all.size == 1
+  puts "There is 1 possible set in the given deck."
+  else if  all.size > 1
   puts "There are #{all.size} possible sets in the given deck."
+       else
+         "There are no sets in the given deck - we will add more cards."
+       end
+  end
   puts
   selection = select_cards(t_cards)
   if !selection[0].eql?'q'
