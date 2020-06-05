@@ -10,11 +10,15 @@
 # Edited 5/30/2020 By Reema Gupta
 # Edited 5/31/2020 By Reema Gupta
 # Edited 5/31/2020 By Sean Michaels
+# Edited 5/3/2020 By Caroline Wheeler
 # Edited 6/4/2020 By Reema Gupta
 # Edited 6/4/2020 By Sean Michaels
+# Edited 6/5/2020 by Reema Gupta
 
 require_relative 'cards'
 require 'time'
+require 'timeout'
+
 
 # 2 methods below determine if a given set of three cards is a true set
 #
@@ -242,7 +246,7 @@ def dupes(*cards)
 end
 
 # Author: Sean Michaels
-# Created 5/26/2017 By Sean Michaels
+# Created 5/26/2020 By Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
 # Debugged 5/27/2020 By Duytan Tran: Modified value passed in isSet? to be an array
 # Edited 5/27/2020 By Reema Gupta: Added the setCount Method Call
@@ -252,8 +256,11 @@ end
 # Edited 5/31/2020 By Reema Gupta:Included the code for removing a valid set
 # Edited 6/2/2020 By Caroline: Changed some syntax
 # Edit 6/3/2020 By Sean Michaels : Got it to quit when the user wants and loop many games
+# Edit 6/5/2020 By Reema Gupta: added timer
 # Method to ask the user for 3 cards to see if they're a set.
+
 def select_cards(cards)
+  Timeout::timeout(10){
   puts 'Please select 3 cards for your chosen set or enter \'q\' as your first card to quit.'
   printf('First card: ')
   card_one = gets.chomp
@@ -281,7 +288,58 @@ def select_cards(cards)
     end
     end
   [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
+  }
+rescue Timeout::Error
 
+  puts
+  puts "took too long to enter, quiting game"
+  exit
+
+end
+
+# Created 5/26/2020 by Sean Michaels
+# Edited 6/5/2020 by Reema Gupta
+#This method will be used when there is no timer
+def selection_cards(cards)
+
+    puts 'Please select 3 cards for your chosen set or enter \'q\' as your first card to quit.'
+    printf('First card: ')
+    card_one = gets.chomp
+    if card_one.eql? 'q'
+      puts 'Quiting current game...'
+      return ['q']
+    else
+      printf('Second card: ')
+      card_two = gets.chomp
+      printf('Third card: ')
+      card_three = gets.chomp
+      card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
+      unless (0...cards.size) === card_one.to_i && (0...cards.size) === card_three.to_i && (0...cards.size) === card_two.to_i
+
+        puts 'A card choice was found to be invalid. Please select 3 new cards.'
+        print 'First card: '
+        card_one = gets.chomp
+        print 'Second card: '
+        card_two = gets.chomp
+        print 'Third card: '
+        card_three = gets.chomp
+
+        card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
+
+      end
+    end
+    [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
+
+end
+# Created 5/6/2020 By Reema Gupta
+# 2 Methods one to pass the user entered time and another to calculate remaining time
+$time = Time.new
+def elapsed_time(user_value)
+  $time= Time.new + user_value
+end
+def remain_time
+  rem_time= $time - Time.new
+  rem_time.to_i
 end
 
 
@@ -296,6 +354,8 @@ high_score_list = {}
 t_cards = name.tabled_cards
 print 'Would you like a tutorial? [Y/N]'
 tutorial if gets.chomp.eql? 'Y'
+puts "Do you want play with a timer? [Y/N]"
+timer_ask=gets.chomp
 
 while play && t_cards.size != 0
   t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
@@ -314,7 +374,37 @@ while play && t_cards.size != 0
        end
   end
   puts
-  selection = select_cards(t_cards)
+  if(timer_ask.eql? 'Y')
+    puts "Enter time in seconds "
+    user_value= gets.to_i
+    puts "You have #{user_value} seconds to find a set in the given cards"
+
+
+            t= elapsed_time(user_value)
+
+     while (Time.new<t)
+
+                  time_remaining = remain_time
+                  if  (time_remaining % 10 == 0)
+                    puts " #{time_remaining} seconds left "
+                  end
+
+                  sleep 1
+
+     end
+    puts("You now have 10 seconds to enter the selected cards")
+    sleep 3
+    puts
+    puts("The game will quit, and you will loose all your progress, if no cards are entered")
+    sleep 3
+    puts
+    puts " Enter the selected numbers "
+    puts
+  selection=select_cards(t_cards)
+
+  else
+    selection=selection_cards(t_cards)
+    end
   if !selection[0].eql?'q'
     if isSet?(selection)
       puts 'That was a valid set!'
@@ -329,7 +419,5 @@ while play && t_cards.size != 0
     play = false
   end
 end
-
-
 
 high_score(count, high_score_list) # When game has finished will display current high score
