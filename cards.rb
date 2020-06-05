@@ -4,6 +4,7 @@
 # Edited 5/30/2020 By Duytan Tran
 # Edited 6/2/2020 By Sean Michaels
 # Edited 6/3/2020 By Duytan Tran
+# Edited 6/5/2020 By Duytan Tran
 # Class that generates two decks of 81 unique cards, one base-deck
 # and one play-deck. The base deck contains an array of all 81 unique cards and
 # the play-deck is a shuffled version of the based deck.
@@ -57,25 +58,24 @@ class Cards
   end
 
   # Created 6/2/2020 By Sean Michaels
-  # Edited on 6/4/2020 By Sean Michaels : Changed to a pop and push
+  # Edited on 6/4/2020 By Sean Michaels: Changed to a pop and push
   def tabled_cards
     (0..11).each {  @tabled_deck.push(@play_deck.pop) }
     @tabled_deck
   end
 
   # Created 6/03/2020 By Reema Gupta
-  # Edited on 6/3/2020 By Sean Michaels : Changed to a pop and push
-  def put_cards(t_cards)
+  # Edited on 6/3/2020 By Sean Michaels: Changed to a pop and push
+  # Edited on 6/5/2020 By Duytan Tran: Parenthesis coding convention
+  def put_cards t_cards
     t_cards.push *(@play_deck.pop 3)
   end
 
   # Author: Caroline Wheeler
   # Created on 6/2/2020
+  # Edited on 6/5/2020 By Duytan Tran: Parenthesis coding convention
   # Given an array of table cards returns an array containing all valid sets
-  # Author: Caroline Wheeler
-  # Created on 6/2/2020
-  # Given an array of table cards returns an array containing all valid sets
-  def allSets(deck)
+  def allSets deck
     set_arr = []
     all_set = deck.combination(3).to_a
     all_set.each do |i|
