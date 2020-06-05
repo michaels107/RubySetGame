@@ -364,7 +364,7 @@ high_score_list = {}
 t_cards = name.tabled_cards
 print 'Would you like a tutorial? [Y/N]'
 tutorial if gets.chomp.eql? 'Y'
-puts "Do you want play with a timer? [Y/N]"
+print 'Do you want play with a timer? [Y/N]'
 timer_ask=gets.chomp
 
 while play && t_cards.size != 0
@@ -384,33 +384,26 @@ while play && t_cards.size != 0
   end
   puts
   if(timer_ask.eql? 'Y')
-    puts "Enter time in seconds "
+    print "Enter the time in seconds it will take for you to find a single set (You will be prompted for the set when the timer ends):"
     user_value= gets.to_i
     puts "You have #{user_value} seconds to find a set in the given cards"
-
-
-            t= elapsed_time(user_value)
-
-     while (Time.new<t)
-
+    t= elapsed_time(user_value)
+    while (Time.new<t)
                   time_remaining = remain_time
                   if  (time_remaining % 10 == 0)
                     puts " #{time_remaining} seconds left "
                   end
-
                   sleep 1
-
-     end
+    end
     puts("You now have 10 seconds to enter the selected cards")
     sleep 3
     puts
-    puts("The game will quit, and you will loose all your progress, if no cards are entered")
+    puts("The game will quit, and you will lose all your progress, if no cards are entered")
     sleep 3
     puts
-    puts " Enter the selected numbers "
+    puts" Enter the selected numbers "
     puts
   selection=select_cards(t_cards)
-
   else
     selection=selection_cards(t_cards)
     end
@@ -420,7 +413,6 @@ while play && t_cards.size != 0
       count = setCount(count)
       t_cards = t_cards-selection
       name.put_cards(t_cards)
-
     else
       puts 'The cards selected were not a valid set, try another selection of cards.'
     end
