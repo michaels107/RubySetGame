@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # Created 5/22/2020 By Duytan Tran
 # Edited 5/26/2020 By Duytan Tran
 # Edited 5/28/2020 By Duytan Tran
@@ -57,13 +56,13 @@ class Cards
     puts
   end
 
-  # Created 6/2/202 By Sean Michaels
+  # Created 6/2/2020 By Sean Michaels
   # Edited on 6/4/2020 By Sean Michaels : Changed to a pop and push
-
   def tabled_cards
     (0..11).each {  @tabled_deck.push(@play_deck.pop) }
     @tabled_deck
   end
+
   # Created 6/03/2020 By Reema Gupta
   # Edited on 6/3/2020 By Sean Michaels : Changed to a pop and push
   def put_cards(t_cards)

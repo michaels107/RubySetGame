@@ -6,19 +6,18 @@
 # Debugged 5/27/2020 by Duytan Tran
 # Edited 5/27/2020 by Reema Gupta
 # Edited 5/30/2020 by Sean Michaels
-# Edited 5/30/2020 By Duytan Tran
-# Edited 5/30/2020 By Reema Gupta
-# Edited 5/31/2020 By Reema Gupta
-# Edited 5/31/2020 By Sean Michaels
-# Edited 5/3/2020 By Caroline Wheeler
-# Edited 6/4/2020 By Reema Gupta
-# Edited 6/4/2020 By Sean Michaels
+# Edited 5/30/2020 by Duytan Tran
+# Edited 5/30/2020 by Reema Gupta
+# Edited 5/31/2020 by Reema Gupta
+# Edited 5/31/2020 by Sean Michaels
+# Edited 5/3/2020 by Caroline Wheeler
+# Edited 6/4/2020 by Reema Gupta
+# Edited 6/4/2020 by Sean Michaels
 # Edited 6/5/2020 by Reema Gupta
-
+# Edited 6/5/2020 by Duytan Tran
 require_relative 'cards'
 require 'time'
 require 'timeout'
-
 
 # 2 methods below determine if a given set of three cards is a true set
 #
@@ -228,7 +227,9 @@ def print_all(all)
     print "\t#{i}) %-39s " % all[3][i][4, 20]
   end
 end
-# Created by Sean Michaels and Duytan Tran
+
+# Author: Sean Michael
+# Created 6/4/2020
 # Checks for duplicate cards in the select cards method.
 def dupes(*cards)
   card_one, card_two, card_three = *cards
@@ -245,7 +246,8 @@ def dupes(*cards)
   [card_one, card_two, card_three]
 end
 
-#Created by Sean Michaels and Duytan Tran
+# Author: Sean Michael
+# Created 6/4/2020
 # Prints cards into console
 def print_cards(t_cards)
   t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
@@ -255,6 +257,7 @@ def print_cards(t_cards)
   end
   puts
 end
+
 # Author: Sean Michaels
 # Created 5/26/2020 By Sean Michaels
 # Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
@@ -268,7 +271,6 @@ end
 # Edit 6/3/2020 By Sean Michaels : Got it to quit when the user wants and loop many games
 # Edit 6/5/2020 By Reema Gupta: added timer
 # Method to ask the user for 3 cards to see if they're a set.
-
 def select_cards(cards)
   Timeout::timeout(10){
   puts 'Please select 3 cards for your chosen set or enter \'q\' as your first card to quit.'
@@ -341,6 +343,7 @@ def selection_cards(cards)
     [cards[card_one.to_i], cards[card_two.to_i], cards[card_three.to_i]]
 
 end
+
 # Created 5/6/2020 By Reema Gupta
 # 2 Methods one to pass the user entered time and another to calculate remaining time
 $time = Time.new
@@ -352,8 +355,7 @@ def remain_time
   rem_time.to_i
 end
 
-
-# Basically the main
+# "Main"
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
@@ -371,13 +373,10 @@ while play && t_cards.size != 0
   print_cards(t_cards)
   all = name.allSets t_cards
   while all.length < 1
-
       puts "There are no sets in the given deck - we will add more cards."
       name.put_cards(t_cards)
       print_cards(t_cards)
       all = name.allSets t_cards
-
-
   end
   if  all.size >= 1
       puts "There are #{all.size} possible set(s) in the given deck."
@@ -389,11 +388,11 @@ while play && t_cards.size != 0
     puts "You have #{user_value} seconds to find a set in the given cards"
     t= elapsed_time(user_value)
     while (Time.new<t)
-                  time_remaining = remain_time
-                  if  (time_remaining % 10 == 0)
-                    puts " #{time_remaining} seconds left "
-                  end
-                  sleep 1
+      time_remaining = remain_time
+      if  (time_remaining % 10 == 0)
+        puts " #{time_remaining} seconds left "
+      end
+      sleep 1
     end
     puts("You now have 10 seconds to enter the selected cards")
     sleep 3
@@ -403,10 +402,10 @@ while play && t_cards.size != 0
     puts
     puts" Enter the selected numbers "
     puts
-  selection=select_cards(t_cards)
+    selection=select_cards(t_cards)
   else
     selection=selection_cards(t_cards)
-    end
+  end
   if !selection[0].eql?'q'
     if isSet?(selection)
       puts 'That was a valid set!'
@@ -422,3 +421,4 @@ while play && t_cards.size != 0
 end
 
 high_score(count, high_score_list) # When game has finished will display current high score
+
