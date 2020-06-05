@@ -8,8 +8,7 @@
 * Documentation: Reema Gupta
 
 ### Contributions
-* base_deck formation, play_deck formation, and respective print methods for cards class (cards.rb), Visualized subclass of Cards
-  that appends respective colorized ASCII characters to the end of each card, rspec testing (cards_spec.rb): Duytan Tran
+* base_deck formation, play_deck formation, and respective print methods for cards class (cards.rb), Visualized subclass of Cards that appends respective colorized ASCII characters to the end of each card, rspec testing (cards_spec.rb): Duytan Tran
 * setCount, putCard method and code for removing valid set(cardsGame.rb), Timer(timer.rb): Reema Gupta
 * Main game functionality, plus some methods: Sean Michaels
 * isSet?, same_or_dif?, tutorial + 8 helper methods (cardsGame.rb), and allSets (cards.rb) : Caroline Wheeler
@@ -27,10 +26,9 @@
 5. Check the box next to Custom Font
 6. Click on Monospace Regular
 7. Drag the slider on the bottom of the window to the change size (16 should be fine)
+8. Resize the terminal window to better fit your screen by clicking and dragging the edges of it
 
-### How to run Cards & Visualized Class test cases
+### How to run Rspec test cases
 1. install rspec using terminal command: gem install rspec
-2. cd to the file location of cards_spec.rb
-3. Run cards_spec.rb test cases using terminal command: rspec cards_spec.rb
-
-Note: require 'cards' wouldn't allow us to run cards_spec.rb within the testing folder, hence it is on the same level as cards.rb using require_relative 'cards', the filename for which it is testing
+2. cd to the file location of INSERTNAME_spec.rb in the testing folder
+3. Run Rspec test cases using terminal command: rspec INSERTNAME_spec.rb
