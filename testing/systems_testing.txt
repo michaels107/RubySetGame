@@ -134,7 +134,7 @@ user name and score to the list
 
 Author: Sean Michaels
 Date: 6/6/2020
-Test #14: High Score printing
+Test #18: High Score printing
 Description: Creating a new file for high score
 Expected Output: User is prompted with a option of using an made .txt file to store high score, user chooses 'N', it
 it prompts for a name to create a file for the user to store their scores on. Then asks user for name and print out the
