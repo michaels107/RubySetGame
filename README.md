@@ -9,10 +9,12 @@
 
 ### Contributions
 * Cards class base_deck & play_deck generation (cards.rb), Visualized subclass that appends "colorized" ASCII characters to the end of each card in base_deck & play_deck (cards.rb), Rspec testing on base_deck & playdeck generation for both Cards and Visualized (cards_spec.rb), and input-validation/setless-card-dealing systems testing (systems_testing.txt): Duytan Tran
-  
+
 * setCount, putCard method and code for removing valid set(cardsGame.rb), Timer(cardsGame.rb), rspec testing on put_cards(test_put_card_spec.rb), timer input & valid set system testing (systems_testing.txt) : Reema Gupta
+
 * input testing of highscore(systems_testing.txt), rspec testing of cards class(test_file_sean_spec.rb), Creating the cardsGame.rb file, selection_cards/select_cards methods(cardsGame.rb), print_cards(cardsGame.rb), dupes method (cardsGame.rb), high_score method(cardsGame.rb), code to play the game such as asking user if they want to play, I/O : Sean Michaels
-* isSet?, same_or_dif?, tutorial + 8 helper methods (cardsGame.rb), and allSets (cards.rb) : Caroline Wheeler
+
+* isSet?, same_or_dif?, tutorial + 8 helper methods (cardsGame.rb), allSets (cards.rb), and rspec testing of allSets (allSets_spec.rb) and isSet? (isSet?_spec.rb): Caroline Wheeler
 
 ### How to execute
 1. Install colorize gem using terminal command: gem install colorize
