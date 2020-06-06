@@ -82,3 +82,29 @@ Description: upon being prompted for card choices input -2, 420.0, 69
 Expected Output: reject the inputs and reprompt
 Actual Output: card choices were found invalid, reprompts
 
+Author: Sean Michaels
+Date: 6/6/2020
+Test #12: High Score printing
+Description: When the game ends the game will prompt the user if they want to add to the high score, the user chooses 'N'
+Expected Output: Printing the header  of highscores and list the players names with the highscore score first Desc
+Actual Output: prints header and lists the players names with the high score first desc
+
+Author: Sean Michaels
+Date: 6/6/2020
+Test #13: High Score printing
+Description: Using a  previous highscore .txt file to add to high score
+Expected Output: User is prompted with a option of using an made .txt file to store high score, user chooses 'Y', it
+asks user for name and print out the current highscore with their name respectively in the list and adds to the file.
+Actual Output: Prompted with asks for a .txt, user had one and entered it, user enters name, prints high score and adds
+user name and score to the list
+
+Author: Sean Michaels
+Date: 6/6/2020
+Test #14: High Score printing
+Description: Creating a new file for high score
+Expected Output: User is prompted with a option of using an made .txt file to store high score, user chooses 'N', it
+it prompts for a name to create a file for the user to store their scores on. Then asks user for name and print out the
+current highscore with their name respectively in the list and adds to the file.
+Actual Output: Prompted with asks for a .txt, userd didnt have one, game asks user for a name of a file, file made,
+user name and score added to the list, prints highscore and added name to list.
+
