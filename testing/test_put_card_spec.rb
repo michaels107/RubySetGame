@@ -1,10 +1,12 @@
 # Created 6/06/2020 by Reema Gupta
 # Rspec test cases for the cards.rb source code.
 require_relative '../cards.rb'
-
+require_relative '../cardsGame.rb'
+require '../cardsGame.rb'
 # Created 6/06/2020 by Reema Gupta
 # Test case 1: put cards method
 require 'colorize'
+
 describe Cards do
   context "testing put_cards is working correctly" do
 
@@ -17,4 +19,6 @@ describe Cards do
     end
   end
 end
+
+
 

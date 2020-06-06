@@ -360,15 +360,19 @@ end
 # Edited 6/02/2020 by Caroline Wheeler: Changed some syntax
 # Edited 6/03/2020 by Sean Michaels : Got it to quit when the user wants and loop many games
 # Edited 6/05/2020 by Reema Gupta: added timer
+# Edited 6/05/2020 by Reema Gupta:added condition for exit if the user enters N in the do you want to start playing part
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
 ask = gets.chomp # checks if the user wants to play the game, used later for replay.
 play = ask.eql?('Y')
+if ask.eql?('N')
+  exit
+end
 count = 0
 high_score_list = {}
 t_cards = name.tabled_cards
-print 'Would you like a tutorial? [Y/N]'
+print 'Would you like aY tutorial? [Y/N]'
 tutorial if gets.chomp.eql?('Y')
 print 'Do you want play with a timer? [Y/N]'
 timer_ask = gets.chomp
