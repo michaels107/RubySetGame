@@ -10,7 +10,7 @@
 ### Contributions
 * Cards class base_deck & play_deck generation (cards.rb), Visualized subclass that appends "colorized" ASCII characters to the end of each card in base_deck & play_deck (cards.rb), Rspec testing on base_deck & playdeck generation for both Cards and Visualized (cards_spec.rb), and input-validation/setless-card-dealing systems testing (systems_testing.txt): Duytan Tran
   
-* setCount, putCard method and code for removing valid set(cardsGame.rb), Timer(timer.rb): Reema Gupta
+* setCount, putCard method and code for removing valid set(cardsGame.rb), Timer(cardsGame.rb), rspec testing on put_cards(test_put_card_spec.rb), timer input & valid set system testing (systems_testing.txt) : Reema Gupta
 * Main game functionality, plus some methods: Sean Michaels
 * isSet?, same_or_dif?, tutorial + 8 helper methods (cardsGame.rb), and allSets (cards.rb) : Caroline Wheeler
 
