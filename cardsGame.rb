@@ -372,7 +372,6 @@ print 'Would you like a tutorial? [Y/N]'
 tutorial if gets.chomp.eql?('Y')
 print 'Do you want play with a timer? [Y/N]'
 timer_ask = gets.chomp
-
 while play && t_cards.size != 0
   print_cards t_cards
   all = name.allSets(t_cards)
@@ -382,9 +381,7 @@ while play && t_cards.size != 0
     print_cards t_cards
     all = name.allSets(t_cards)
   end
-  if all.size >= 1
-    puts "There are #{all.size} possible set(s) in the given deck."
-  end
+  puts "There are #{all.size} possible set(s) in the given deck." if all.size >= 1
   puts
   if timer_ask.eql?('Y')
     print "Enter the time in seconds it will take for you to find a single set (You will be prompted for the set when the timer ends):"

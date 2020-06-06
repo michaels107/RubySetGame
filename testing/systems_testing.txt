@@ -1,0 +1,84 @@
+Created 6/6/2020 by Duytan Tran
+Systems testing for Game of Set implementation in cardsGame.rb
+
+####TESTING_NO_SETS_CASES####
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #1: When there are no possible sets in a given dealing of 12 cards w/o timer, the user is informed and 3 more are issued (1 time)
+Description: Forced the allSets method to evaluate to an empty array 1 time, execute by skipping tutorial and timer, and then observe the dealing
+Expected Output: 12 cards are dealt, the user is informed of no possible sets, 3 additional cards are dealt, 15 cards are displayed, and a set exists (since we stopped)
+Actual Output: 12 cards are dealt, user is informed of no possible sets, 3 additional cards are dealt, cards 0-14 are shown, and there now exists a set (6)
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #2: When there are no possible sets in a given dealing of 12 cards w/o timer, the user is informed and 3 more are issued (2 times)
+Description: Forced the allSets method to evaluate to an empty array 2 times, execute by skipping tutorial and timer, and then observe the dealing
+Expected Output: 12 cards are dealt, the user is informed of no possible sets, and 3 additional cards are dealt (2 times), 18 cards are displayed, and a set exists (since we stopped)
+Actual Output: 12 cards are dealt, user is informed of no possible sets, 3 additional cards are dealt, user is informed of no possible sets, 3 additional cards are dealt, cards 0-17 are shown, and there now exists a set (14)
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #3: When there are no possible sets in a given dealing of 12 cards w/o timer, the user is informed and 3 more are issued (3 times)
+Description: Forced the allSets method to evaluate to an empty array 3 times, execute by skipping tutorial and timer, and then observe the dealing
+Expected Output: 12 cards are dealt, the user is informed of no possible sets, and 3 additional cards are dealt (3 times), 21 cards are displayed, and a set exists (mathematically guaranteed)
+Actual Output: 12 cards are dealt, user is informed of no possible sets, 3 additional cards are dealt, user is informed of no possible sets, 3 additional cards are dealt, user is informed of no possible sets, 3 additional cards are dealt, cards 0-20 are shown, and there now exists a set (19)
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #4: When there are no possible sets in a given dealing of 12 cards w/ timer, the user is informed and 3 more are issued (1 time)
+Description: Forced the allSets method to evaluate to an empty array 1 time, execute by skipping tutorial, picking timer, observe the dealing, then pick the time
+Expected Output: 12 cards are dealt, the user is informed of no possible sets, 3 additional cards are dealt, 15 cards are displayed, a set exists (since we stopped), and prompt for time
+Actual Output: 12 cards are dealt, the user is informed of no sets, 3 additonal cards are dealt, cards 0-14 are shown, there exists 5 sets, and then prompted for time
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #5: When there are no possible sets in a given dealing of 12 cards w/ timer, the user is informed and 3 more are issued (2 times)
+Description: Forced the allSets method to evaluate to an empty array 2 times, execute by skipping tutorial, picking timer, observe the dealing, then pick the time
+Expected Output: 12 cards are dealt, the user is informed of no possible sets, 3 additional cards are dealt (2 times), 18 cards are displayed, a set exists (since we stopped), and prompt for time
+Actual Output: 12 cards are dealt, the user is informed of no sets, 3 additonal cards are dealt, the user is informed of no sets, 3 additonal cards are dealt, cards 0-17 are shown, there exists 12 sets, and then prompted for time
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #6: When there are no possible sets in a given dealing of 12 cards w/ timer, the user is informed and 3 more are issued (3 times)
+Description: Forced the allSets method to evaluate to an empty array 3 times, execute by skipping tutorial, picking timer, observe the dealing, then pick the time
+Expected Output: 12 cards are dealt, the user is informed of no possible sets, 3 additional cards are dealt (3 times), 18 cards are displayed, a set exists (mathematically guaranteed), and prompt for time
+Actual Output: 12 cards are dealt, the user is informed of no sets, 3 additonal cards are dealt, the user is informed of no sets, 3 additonal cards are dealt, the user is informed of no sets, 3 additonal cards are dealt, cards 0-20 are shown, there exists 17 sets, and then prompted for time
+
+####TESTING_INPUT_VALIDATION_CASES####
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #7: 3 non-integer inputs for choosing cards are rejected
+Description: upon being prompted for card choices input a, b, and c
+Expected Output: rejection and reprompt for proper inputs
+Actual Output: Cards choices are rejected for being duplicates (strings evaluate to 0, working as intended) and then reprompts
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #8: 2 non-integer inputs for choosing cards and 1 proper integer input are rejected
+Description: upon being prompted for card choices input a, 2, and c
+Expected Output: rejection and reprompt for proper inputs
+Actual Output: Card choices are rejected for being found invalid and then reprompts
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #9: 1 non-integer input for choosing cards and 2 proper nonzero integers inputs are accepted
+Description: upon being prompted for card choices input a, 2, and 3
+Expected Output: accept and determine if valid set or not, if not reprompts
+Actual Output: Card choices were accepted, but it was not a valid set (cards (a)0, 2, and 3; working as intended), then reprompts
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #10: 3 proper integer inputs are accepted
+Description: upon being prompted for card choices input 0, 1, and 2
+Expected Output: accept and determine if valid set or not, if not reprompts
+Actual Output: Card choices were accepted, but it was not a valid set, then reprompts
+
+Author: Duytan Tran
+Date: 6/6/2020
+Test #11: 3 non-proper integer inputs are rejected
+Description: upon being prompted for card choices input -2, 420.0, 69
+Expected Output: reject the inputs and reprompt
+Actual Output: card choices were found invalid, reprompts
+
