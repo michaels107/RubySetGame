@@ -1,10 +1,10 @@
-# Created 5/24/2020 By Duytan Tran
-# Edited 5/29/2020 By Duytan Tran
+# Created 5/24/2020 by Duytan Tran
+# Edited 5/29/2020  by Duytan Tran
 # Rspec test cases for the cards.rb source code.
 require_relative '../cards.rb'
 require 'colorize'
 
-# Created 5/24/2020 By Duytan Tran
+# Created 5/24/2020 by Duytan Tran
 # Test case 1: base_deck count
 describe Cards do
   context "When creating the base_deck of Cards class" do
@@ -18,7 +18,7 @@ describe Cards do
   end
 end
 
-# Created 5/24/2020 By Duytan Tran
+# Created 5/24/2020 by Duytan Tran
 # Test case 2: base_deck composition
 describe Cards do
   context "When creating the base_deck of Cards class" do
@@ -39,7 +39,7 @@ describe Cards do
   end
 end
 
-# Created 5/24/2020 By Duytan Tran
+# Created 5/24/2020 by Duytan Tran
 # Test case 3: play_deck count
 describe Cards do
   context "When creating the play_deck of Cards class" do
@@ -53,7 +53,7 @@ describe Cards do
   end
 end
 
-# Created 5/24/2020 By Duytan Tran
+# Created 5/24/2020 by Duytan Tran
 # Test case 4: play_deck composition
 describe Cards do
   context "When creating the play_deck of Cards class" do
@@ -74,7 +74,7 @@ describe Cards do
   end
 end
 
-# Created 5/29/2020 By Duytan Tran
+# Created 5/29/2020 by Duytan Tran
 # Test case 5: visualized base_deck count
 describe Cards do
   context "When creating the base_deck of Visualized class" do
@@ -88,7 +88,7 @@ describe Cards do
   end
 end
 
-# Created 5/29/2020 By Duytan Tran
+# Created 5/29/2020 by Duytan Tran
 # Test case 6: visualized play_deck count
 describe Cards do
   context "When creating the play_deck of Visualized class" do
@@ -102,7 +102,7 @@ describe Cards do
   end
 end
 
-# Created 5/29/2020 By Duytan Tran
+# Created 5/29/2020 by Duytan Tran
 # Test case 7: visualized play_deck is a permutation of base_deck
 describe Cards do
   context "When creating the play_deck of Visualized class" do
@@ -115,7 +115,7 @@ describe Cards do
   end
 end
 
-# Created 6/2/2020 by Caroline Wheeler
+# Created 6/02/2020 by Caroline Wheeler
 # Test case 8: Tests allSets method with random table deck
 describe Cards do
 

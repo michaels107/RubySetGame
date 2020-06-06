@@ -1,5 +1,4 @@
-# Author: Caroline Wheeler
-# 5/26/2020
+# Created 5/26/2020 by Caroline Wheeler
 # Rspec test cases for isSet? and same_or_dif?
 
 require_relative '../cards.rb'

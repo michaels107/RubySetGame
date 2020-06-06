@@ -1,14 +1,14 @@
-# Created 6/2/2020 By Sean Michaels
-# Edited 6/2/2020 By Sean Michaels
+# Created 6/02/2020 by Sean Michaels
+# Edited  6/02/2020 by Sean Michaels
 # Rspec test cases for the cards.rb source code and cardsGame.rb.
-#
+
 require_relative '../cardsGame'
 require_relative '../cards'
 require 'colorize'
 require 'time'
 require 'timeout'
 
-# Created 5/24/2020 By Sean Michaels
+# Created 5/24/2020 by Sean Michaels
 # Test case 1: tabled cards method
 describe Cards do
   context "Testing that the tabled deck creating properly" do
@@ -26,7 +26,7 @@ describe Cards do
   end
 end
 
-# Created 6/5/2020 By Sean Michaels
+# Created 6/05/2020 by Sean Michaels
 # Test case 2: dupes method testing to make sure it only returns now dupes.
 describe CardsGame do
   context "dupes method testing to make sure it only returns non-dupes." do
@@ -42,7 +42,7 @@ describe CardsGame do
   end
 end
 
-# Created 6/5/2020 By Sean Michaels
+# Created 6/05/2020 by Sean Michaels
 # Test case 2: dupes method testing to make sure it only returns now dupes.
 describe CardsGame do
   context "dupes method testing to make sure it only returns non-dupes." do
