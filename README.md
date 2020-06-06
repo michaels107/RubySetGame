@@ -8,7 +8,7 @@
 * Documentation: Reema Gupta
 
 ### Contributions
-* base_deck formation, play_deck formation, and respective print methods for cards class (cards.rb), Visualized subclass of Cards that appends respective colorized ASCII characters to the end of each card, rspec testing (cards_spec.rb): Duytan Tran
+* base_deck formation, play_deck formation, and respective print methods for cards class (cards.rb), Visualized subclass of Cards that appends respective colorized ASCII characters to the end of each card, rspec testing (cards_spec.rb), systems testing (systems_testing.txt): Duytan Tran
 * setCount, putCard method and code for removing valid set(cardsGame.rb), Timer(timer.rb): Reema Gupta
 * Main game functionality, plus some methods: Sean Michaels
 * isSet?, same_or_dif?, tutorial + 8 helper methods (cardsGame.rb), and allSets (cards.rb) : Caroline Wheeler
