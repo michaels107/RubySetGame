@@ -360,7 +360,8 @@ end
 # Edited 6/02/2020 by Caroline Wheeler: Changed some syntax
 # Edited 6/03/2020 by Sean Michaels : Got it to quit when the user wants and loop many games
 # Edited 6/05/2020 by Reema Gupta: added timer
-# Edited 6/05/2020 by Reema Gupta:added condition for exit if the user enters N in the do you want to start playing part
+# Edited 6/06/2020 by Reema Gupta: Changed some syntax
+# Edited 6/06/2020 by Reema Gupta:added condition for exit if the user enters N in the do you want to start playing part
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
@@ -391,7 +392,9 @@ while play && t_cards.size != 0
     print "Enter the time in seconds it will take for you to find a single set (You will be prompted for the set when the timer ends):"
     user_value = gets.to_i
     if(user_value<0)
-      user_value=0
+      puts
+      print "Enter the time in seconds it will take for you to find a single set (You will be prompted for the set when the timer ends):"
+      user_value = gets.to_i
     end
     puts "You have #{user_value} seconds to find a set in the given cards"
     t = elapsed_time(user_value)

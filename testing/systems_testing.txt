@@ -109,10 +109,11 @@ Actual Output: Rounded the input to 27
 
 Author: Reema Gupta
 Date:6/6/2020
-Test #15: negative integer are taken as zero seconds
+Test #15: negative integer inputs are rejected
 Description:  Upon being prompted to enter time needed to find a set input -10
-Expected Output: Takes the input to be zero seconds, continues with the next line of code
-Actual Output: Displays that zero seconds are left, continues with the next line of code
+Expected Output: rejects the inputs, reprompts to enter time
+Actual Output: The input was rejected, reprompts
+
 
 ###HIGH_SCORE_TEST_CASES
 
