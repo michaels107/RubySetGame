@@ -2,11 +2,9 @@
 # Edited  6/02/2020 by Sean Michaels
 # Rspec test cases for the cards.rb source code and cardsGame.rb.
 
-require_relative '../cardsGame'
-require_relative '../cards'
+require_relative '../cardsGame.rb'
+require_relative '../cards.rb'
 require 'colorize'
-require 'time'
-require 'timeout'
 
 # Created 5/24/2020 by Sean Michaels
 # Test case 1: tabled cards method
@@ -15,44 +13,39 @@ describe Cards do
 
     it "should create a tabled deck that has the first 12 shuffled cards" do
       set = Cards.new
-      first_twelve = []
-      (0..11).each {|i|
-        first_twelve.push set.play_deck[i]
-      }
       t_cards = set.tabled_cards
-      expect(t_cards).to eq first_twelve
+      expect(t_cards.length).to be 12
     end
 
   end
 end
 
 # Created 6/05/2020 by Sean Michaels
-# Test case 2: dupes method testing to make sure it only returns now dupes.
-describe CardsGame do
-  context "dupes method testing to make sure it only returns non-dupes." do
+# Test case 2: checks the hash for the highscores
+describe Cards do
+  context "checks the hash is right for the high score" do
 
-    it "should return not duplicate element array" do
+    it "should have an name and a score as a key and value" do
       set = Cards.new
-      card_one, card_two, card_three = 1,2,3
-      card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
-      t_cards = set.tabled_cards
-      expect(card_one, card_two, card_three).to eq 1,2,3
+      high_score_list = {}
+      high_score_list.store 'Sean',12
+      expect(high_score_list['Sean']).to eq 12
     end
 
   end
 end
 
 # Created 6/05/2020 by Sean Michaels
-# Test case 2: dupes method testing to make sure it only returns now dupes.
-describe CardsGame do
-  context "dupes method testing to make sure it only returns non-dupes." do
+# Test case 3: checks the hash for the highscores with another value in it
+describe Cards do
+  context "checks the hash is right for the high score" do
 
-    it "should go into the dupes method and prompt the user to enter new cards because they are dupes" do
+    it "should have an name and a score as a key and value" do
       set = Cards.new
-      card_one, card_two, card_three = 1,2,2
-      card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
-      t_cards = set.tabled_cards
-      expect(card_one, card_two, card_three).to eq 1,2,3
+      high_score_list = {}
+      high_score_list.store 'Sean',12
+      high_score_list.store 'BobbyLee',8
+      expect(high_score_list['BobbyLee']).to eq 8
     end
 
   end
