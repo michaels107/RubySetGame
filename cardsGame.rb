@@ -1,7 +1,7 @@
 # File created 5/25/2020 by Sean Michaels
 # Edited 5/25/2020 by Sean Michaels
 # Edited 5/26/2020 by Caroline Wheeler
-# Edited by 5/26/2020 by Sean Michaels
+# Edited 5/26/2020 by Sean Michaels
 # Debugged 5/26/2020 by Duytan Tran
 # Debugged 5/27/2020 by Duytan Tran
 # Edited 5/27/2020 by Reema Gupta
@@ -10,20 +10,18 @@
 # Edited 5/30/2020 by Reema Gupta
 # Edited 5/31/2020 by Reema Gupta
 # Edited 5/31/2020 by Sean Michaels
-# Edited 5/3/2020 by Caroline Wheeler
-# Edited 6/4/2020 by Reema Gupta
-# Edited 6/4/2020 by Sean Michaels
-# Edited 6/5/2020 by Reema Gupta
-# Edited 6/5/2020 by Duytan Tran
+# Edited 5/03/2020 by Caroline Wheeler
+# Edited 6/04/2020 by Reema Gupta
+# Edited 6/04/2020 by Sean Michaels
+# Edited 6/05/2020 by Reema Gupta
+# Edited 6/05/2020 by Duytan Tran
 require_relative 'cards'
 require 'time'
 require 'timeout'
 
 # 2 methods below determine if a given set of three cards is a true set
-#
-# Author: Caroline Wheeler
-# Created on 5/26/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 5/26/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # returns true if given array is a set, and false if not
 def isSet? card_arr
   return false if card_arr.size != 3
@@ -35,18 +33,16 @@ def isSet? card_arr
   same_or_dif?(color_arr) && same_or_dif?(shape_arr) && same_or_dif?(num_arr) && same_or_dif?(shade_arr)
 end
 
-# Author: Caroline Wheeler
-# Created on 5/26/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 5/26/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # returns true if the arr contains all the same element of all different, false otherwise
 def same_or_dif? card_arr
   card_arr.uniq.size != 2
 end
 
-# Author: Reema Gupta
-# Created on 5/27/2020
-# Edited on 5/31/2020 by Sean Michaels : changed the parameter to contain a integer that would count for current game sets found
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 5/27/2020 by Reema Gupta
+# Edited  5/31/2020 by Sean Michaels : changed the parameter to contain a integer that would count for current game sets found
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # method to count the number of  valid sets found depending on the number of  times you have played
 def setCount count
   count += 1
@@ -54,9 +50,9 @@ def setCount count
   count
 end
 
-# Created on 6/2/202 by Sean Michaels
-# Edited on 6/3/2020 by Sean Michaels : Restoring deleted code
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 6/02/2020 by Sean Michaels
+# Edited  6/03/2020 by Sean Michaels : Restoring deleted code
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # Method to display high scores
 def high_score count, top_list
   print 'Do you want to save your score to the current High Score?[Y/N]'
@@ -93,9 +89,8 @@ def high_score count, top_list
   end
 end
 
-# Author: Caroline Wheeler
-# Created on 6/3/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 6/03/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # Displays an example of an invalid set.
 def bad1 deck
   print "\t#{1}) %-39s " % deck[34][4, 20]
@@ -107,9 +102,8 @@ def bad1 deck
   puts
 end
 
-# Author: Caroline Wheeler
-# Created on 6/3/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 6/03/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # Displays an example of an invalid set.
 def bad2 deck
   print "\t#{1}) %-39s " % deck[5][4, 20]
@@ -121,9 +115,8 @@ def bad2 deck
   puts
 end
 
-# Author: Caroline Wheeler
-# Created on 6/3/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 6/03/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # Gives examples of invalid sets.
 def bad_examples deck
   puts 'The following are not valid sets:'
@@ -133,9 +126,8 @@ def bad_examples deck
   gets.chomp.eql? "\n"
 end
 
-# Author: Caroline Wheeler
-# Created on 6/3/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 6/03/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # Displays an example of a valid set.
 def valid1 deck
   print "\t#{1}) %-39s " % deck[12][4, 20]
@@ -145,9 +137,8 @@ def valid1 deck
   puts
 end
 
-# Author: Caroline Wheeler
-# Created on 6/3/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 6/03/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # Displays an example of a valid set.
 def valid2 deck
   print "\t#{1}) %-39s " % deck[6][4, 20]
@@ -157,9 +148,8 @@ def valid2 deck
   puts
 end
 
-# Author: Caroline Wheeler
-# Created on 6/3/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 6/03/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # Displays an example of a valid set.
 def valid3 deck
   print "\t#{1}) %-39s " % deck[0][4, 20]
@@ -169,9 +159,8 @@ def valid3 deck
   puts
 end
 
-# Author: Caroline Wheeler
-# Created on 6/3/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 6/03/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # Displays an example of a valid set.
 def valid4 deck
   print "\t#{1}) %-39s " % deck[13][4, 20]
@@ -181,9 +170,8 @@ def valid4 deck
   puts
 end
 
-# Author: Caroline Wheeler
-# Created on 6/3/2020
-# Edited 6/5/2020 By Duytan Tran: Parenthesis coding convention
+# Created 6/03/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 # Gives examples of sets.
 def examples deck
   puts 'The following rows are all examples of valid sets:'
@@ -195,8 +183,7 @@ def examples deck
   gets.chomp.eql? "\n"
 end
 
-# Author: Caroline Wheeler
-# Created on 6/3/2020
+# Created 6/03/2020 by Caroline Wheeler
 # Prints the rules of set.
 def rules
   puts 'Press enter for next instruction.'
@@ -219,8 +206,7 @@ def rules
   gets.chomp.eql? "\n"
 end
 
-# Author: Caroline Wheeler
-# Created 6/3/2020
+# Created 6/03/2020 by Caroline Wheeler
 # Runs through rules and examples of how to play.
 def tutorial
   puts
@@ -230,6 +216,8 @@ def tutorial
   bad_examples deck.base_deck
 end
 
+# Created 6/03/2020 by Caroline Wheeler
+# Edited  6/05/2020 by Duytan Tran: Parenthesis coding convention
 def print_all all
   (0..all.size).each do |i| # prints the cards into 3 rows with 4 columns
     puts
@@ -239,9 +227,8 @@ def print_all all
   end
 end
 
-# Author: Sean Michael
-# Created 6/4/2020
-# Edited 6/5/2020 By Duytan Tran: changed conditional to compare integers, returns an array of integers
+# Created 6/04/2020 by Sean Michael
+# Edited  6/05/2020 by Duytan Tran: changed conditional to compare integers, returns an array of integers
 # Checks for duplicate cards in the select cards method.
 def dupes *cards
   card_one, card_two, card_three = *cards.map(&:to_i)
@@ -258,9 +245,8 @@ def dupes *cards
   [card_one, card_two, card_three]
 end
 
-# Author: Sean Michael
-# Created 6/4/2020
-# Edited 6/5/2020 By Duytan Tran: removed parenthesis to follow def convention
+# Created 6/04/2020 by Sean Michael
+# Edited  6/05/2020 by Duytan Tran: removed parenthesis to follow def convention
 # Prints cards into console
 def print_cards t_cards
   t_cards.each_index do |i| # prints the cards into 3 rows with 4 columns
@@ -271,19 +257,12 @@ def print_cards t_cards
   puts
 end
 
-# Author: Sean Michaels
-# Created 5/26/2020 By Sean Michaels
-# Debugged 5/26/2020 By Duytan Tran: Modified the return value to be an array of strings
-# Debugged 5/27/2020 By Duytan Tran: Modified value passed in isSet? to be an array
-# Edited 5/27/2020 By Reema Gupta: Added the setCount Method Call
-# Edited 5/30/2020 By Sean Michaels:Changed the representation of cards to include the visualized format
-# Debugged 5/30/2020 By Duytan Tran: Fixed returning array to be elements of parameter cards
-# Edited 5/31/2020 By Reema Gupta: Added putCard Method to push 3 cards in when a valid set is found
-# Edited 5/31/2020 By Reema Gupta:Included the code for removing a valid set
-# Edited 6/2/2020 By Caroline: Changed some syntax
-# Edited 6/3/2020 By Sean Michaels : Got it to quit when the user wants and loop many games
-# Edited 6/5/2020 By Reema Gupta: added timer
-# Edited 6/5/2020 By Duytan Tran: change unless to until and fixed parenthesis usage to fit convention
+
+# Created 5/26/2020 by Sean Michaels
+# Debugged 5/26/2020 by Duytan Tran: Modified the return value to be an array of strings
+# Edited  6/05/2020 by Duytan Tran: change unless to until and fixed parenthesis usage to fit convention
+# Edited  6/05/2020 by Reema Gupta: added timeout method
+# Edited 6/05/2020 by Duytan Tran: Parenthesis convention changes and spacing
 # Method to ask the user for 3 cards to see if they're a set.
 def select_cards cards
   Timeout::timeout(10) {
@@ -323,8 +302,9 @@ rescue Timeout::Error
 end
 
 # Created 5/26/2020 by Sean Michaels
-# Edited 6/5/2020 by Reema Gupta
-# Edited 6/5/2020 by Duytan Tran: added until loop, changed conditional to cover?, removed unnecessary parentheses
+# Edited 6/05/2020 by Reema Gupta: Copied the method so as to make it work without timer
+# Edited 6/05/2020 by Duytan Tran: added until loop, changed conditional to cover?, removed unnecessary parentheses
+# Method to ask the user for 3 cards to see if they're a set.
 # This method will be used when there is no timer
 def selection_cards cards
   puts 'Please select 3 cards for your chosen set or enter \'q\' as your first card to quit.'
@@ -357,21 +337,29 @@ def selection_cards cards
   [cards[card_one], cards[card_two], cards[card_three]]
 end
 
-# Created 5/6/2020 By Reema Gupta
-# Edited 6/5/2020 By Duytan Tran: Removed parenthesis to follow def conventions
+# Created 6/05/2020 by Reema Gupta
+# Edited 6/05/2020 By Duytan Tran: Removed parenthesis to follow def conventions
 # 2 Methods one to pass the user entered time and another to calculate remaining time
 $time = Time.new
 def elapsed_time user_value
   $time = Time.new + user_value
 end
-
 def remain_time
   rem_time = $time - Time.new
   rem_time.to_i
 end
 
 # "Main"
-# Edited 6/5/2020 By Duytan Tran: Parenthesis convention changes and spacing
+# Created 5/26/2020 by Sean Michaels
+# Debugged 5/27/2020 by Duytan Tran: Modified value passed in isSet? to be an array
+# Edited 5/27/2020 by Reema Gupta: Added the setCount Method Call
+# Edited 5/30/2020 by Sean Michaels:Changed the representation of cards to include the visualized format
+# Debugged 5/30/2020 by Duytan Tran: Fixed returning array to be elements of parameter cards
+# Edited 5/31/2020 by Reema Gupta: Added putCard Method to push 3 cards in when a valid set is found
+# Edited 5/31/2020 by Reema Gupta:Included the code for removing a valid set
+# Edited 6/02/2020 by Caroline Wheeler: Changed some syntax
+# Edited 6/03/2020 by Sean Michaels : Got it to quit when the user wants and loop many games
+# Edited 6/05/2020 by Reema Gupta: added timer
 puts 'Welcome to the Set Game!'
 name = Visualized.new
 print 'Do you want to start playing[Y/N]:'
