@@ -372,7 +372,7 @@ end
 count = 0
 high_score_list = {}
 t_cards = name.tabled_cards
-print 'Would you like aY tutorial? [Y/N]'
+print 'Would you like a tutorial? [Y/N]'
 tutorial if gets.chomp.eql?('Y')
 print 'Do you want play with a timer? [Y/N]'
 timer_ask = gets.chomp
@@ -390,6 +390,9 @@ while play && t_cards.size != 0
   if timer_ask.eql?('Y')
     print "Enter the time in seconds it will take for you to find a single set (You will be prompted for the set when the timer ends):"
     user_value = gets.to_i
+    if(user_value<0)
+      user_value=0
+    end
     puts "You have #{user_value} seconds to find a set in the given cards"
     t = elapsed_time(user_value)
     while Time.new < t

@@ -82,16 +82,50 @@ Description: upon being prompted for card choices input -2, 420.0, 69
 Expected Output: reject the inputs and reprompt
 Actual Output: card choices were found invalid, reprompts
 
+###TESTING_VALID_SET_FOUND
+
+Author: Reema Gupta
+Date: 6/6/2020
+Test #12: The 3 elements of valid set are removed and 3 new elements are added
+Description: upon being prompted for card choices enter cards which form a valid set
+Expected Output: removes the valid set from the deck and add three new cards at the end of set, valid set count increases by 1,reprompts
+Actual Output: valid set was removed, three new cards were added at the end of deck, valid set count increases by 1, reprompts
+
+###TESTING_TIMER_INPUTS
+
+Author: Reema Gupta
+Date:6/6/2020
+Test #13: non number inputs is taken as zero seconds
+Description: Upon being prompted to enter time needed to  find a set  input a
+Expected Output: Takes the input to be zero seconds, continues with the next line of code
+Actual Output: Displays that zero seconds are left, continues with the next line of code
+
+Author: Reema Gupta
+Date:6/6/2020
+Test #14: float inputs are rounded
+Description:  Upon being prompted to enter time needed to find a set input 27.9
+Expected Output: Round down the entered input
+Actual Output: Rounded the input to 27
+
+Author: Reema Gupta
+Date:6/6/2020
+Test #15: negative integer are taken as zero seconds
+Description:  Upon being prompted to enter time needed to find a set input -10
+Expected Output: Takes the input to be zero seconds, continues with the next line of code
+Actual Output: Displays that zero seconds are left, continues with the next line of code
+
+###HIGH_SCORE_TEST_CASES
+
 Author: Sean Michaels
 Date: 6/6/2020
-Test #12: High Score printing
+Test #16: High Score printing
 Description: When the game ends the game will prompt the user if they want to add to the high score, the user chooses 'N'
 Expected Output: Printing the header  of highscores and list the players names with the highscore score first Desc
 Actual Output: prints header and lists the players names with the high score first desc
 
 Author: Sean Michaels
 Date: 6/6/2020
-Test #13: High Score printing
+Test #17: High Score printing
 Description: Using a  previous highscore .txt file to add to high score
 Expected Output: User is prompted with a option of using an made .txt file to store high score, user chooses 'Y', it
 asks user for name and print out the current highscore with their name respectively in the list and adds to the file.
