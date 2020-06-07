@@ -25,6 +25,7 @@ class Cards
     #Creates an randomized order version of base_deck
     @play_deck = @base_deck.sample(81)
 
+    #Gameplay decks
     @tabled_deck = []
     @replaced_deck = []
   end
