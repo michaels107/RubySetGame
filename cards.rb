@@ -15,15 +15,20 @@ class Cards
 # Created 5/22/2020 by Duytan Tran
 # Edited  5/25/2020 by Duytan Tran: Reimplemented to be terse
 # Edited  5/26/2020 by Duytan Tran: Elements are a string instead of integers
+# Edited  6/06/2020 by Duytan Tran: Logical spacing and commenting
 # Set base deck and randomized play deck creation
   def initialize
+    #Creates an array of 3 types per 4 attributes ordered card deck
     @base_deck = [1, 2, 3].repeated_permutation(4).to_a
     @base_deck.map!(&:join)
+
+    #Creates an randomized order version of base_deck
     @play_deck = @base_deck.sample(81)
+
     @tabled_deck = []
     @replaced_deck = []
-
   end
+
 # Created 5/22/2020 by Duytan Tran
 # Edited  5/30/2020 by Duytan Tran: Reimplemented as attr_accessor(s)
 # Allows access to the base_deck and play_deck
@@ -79,12 +84,9 @@ class Cards
   def allSets deck
     set_arr = []
     all_set = deck.combination(3).to_a
-    all_set.each do |i|
-      set_arr.push(i) if isSet? i
-    end
+    all_set.each { |i| set_arr.push(i) if isSet?(i) }
     set_arr
   end
-
 end
 
 # Created 5/28/2020 by Duytan Tran
@@ -157,3 +159,4 @@ class Visualized < Cards
     @play_deck = @base_deck.sample(81)
   end
 end
+

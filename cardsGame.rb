@@ -15,6 +15,14 @@
 # Edited 6/04/2020 by Sean Michaels
 # Edited 6/05/2020 by Reema Gupta
 # Edited 6/05/2020 by Duytan Tran
+# Edited 6/06/2020 by Duytan Tran
+=begin
+cardsGame.rb is the central file of our code base that brings together the
+Cards class, Visualized subclass, and the timer into a single program. In this
+file provides the primary logic concerning the ability to play the Game of Sets
+card game; featuring automatic and randomized card distribution, timer tracking,
+point tracking, high-score keeping, a tutorial, and more.
+=end
 require_relative 'cards'
 require 'time'
 require 'timeout'
@@ -25,7 +33,6 @@ require 'timeout'
 # returns true if given array is a set, and false if not
 def isSet? card_arr
   return false if card_arr.size != 3
-
   color_arr = [card_arr[0][0], card_arr[1][0], card_arr[2][0]]
   shape_arr = [card_arr[0][1], card_arr[1][1], card_arr[2][1]]
   num_arr = [card_arr[0][2], card_arr[1][2], card_arr[2][2]]
@@ -56,7 +63,6 @@ end
 # Method to display high scores
 def high_score count, top_list
   print 'Do you want to save your score to the current High Score?[Y/N]'
-
   if gets.chomp.eql? 'Y'
     print 'Do you have a high score file?[Y/N]'
     if gets.chomp.eql? 'Y'
@@ -73,7 +79,6 @@ def high_score count, top_list
         end
       end
     else # empty
-
       print 'Please enter your name (One Word):'
       player = gets.chomp
       print 'Please enter name for the file plus a .txt extension:'
@@ -233,7 +238,6 @@ end
 def dupes *cards
   card_one, card_two, card_three = *cards.map(&:to_i)
   while card_one.eql?(card_two) || card_one.eql?(card_three) || card_two.eql?(card_three)
-
     puts 'Duplicates are not allowed. Please select 3 new cards.'
     print 'First card: '
     card_one = gets.chomp
@@ -280,7 +284,6 @@ def select_cards cards
       card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
       validRng = 0...cards.size
       until (validRng.cover? card_one) && (validRng.cover? card_two) && (validRng.cover? card_three)
-
         puts 'A card choice was found to be invalid. Please select 3 new cards.'
         print 'First card: '
         card_one = gets.chomp
@@ -288,9 +291,7 @@ def select_cards cards
         card_two = gets.chomp
         print 'Third card: '
         card_three = gets.chomp
-
         card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
-
       end
     end
     [cards[card_one], cards[card_two], cards[card_three]]
@@ -321,7 +322,6 @@ def selection_cards cards
     card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
     validRng = 0...cards.size
     until (validRng.cover? card_one) && (validRng.cover? card_two) && (validRng.cover? card_three)
-
       puts 'A card choice was found to be invalid. Please select 3 new cards.'
       print 'First card: '
       card_one = gets.chomp
@@ -329,9 +329,7 @@ def selection_cards cards
       card_two = gets.chomp
       print 'Third card: '
       card_three = gets.chomp
-
       card_one, card_two, card_three = *(dupes card_one, card_two, card_three)
-
     end
   end
   [cards[card_one], cards[card_two], cards[card_three]]
@@ -339,11 +337,16 @@ end
 
 # Created 6/05/2020 by Reema Gupta
 # Edited 6/05/2020 By Duytan Tran: Removed parenthesis to follow def conventions
-# 2 Methods one to pass the user entered time and another to calculate remaining time
+# Edited 6/06/2020 By Duytan Tran: Added space between the two and documentation
+# Takes the user entered time
 $time = Time.new
 def elapsed_time user_value
   $time = Time.new + user_value
 end
+
+# Created 6/05/2020 by Reema Gupta
+# Edited 6/06/2020 By Duytan Tran: Added space between the two and documentation
+# Calculates remaining time
 def remain_time
   rem_time = $time - Time.new
   rem_time.to_i
@@ -362,23 +365,27 @@ end
 # Edited 6/05/2020 by Reema Gupta: added timer
 # Edited 6/06/2020 by Reema Gupta: Changed some syntax
 # Edited 6/06/2020 by Reema Gupta:added condition for exit if the user enters N in the do you want to start playing part
+# Edited 6/06/2020 by Duytan Tran: Spaced out in logical paragraphs and added comments
 puts 'Welcome to the Set Game!'
-name = Visualized.new
-print 'Do you want to start playing[Y/N]:'
-ask = gets.chomp # checks if the user wants to play the game, used later for replay.
+print 'Do you want to start playing[Y/N]: '
+ask = gets.chomp
 play = ask.eql?('Y')
-if ask.eql?('N')
-  exit
-end
+exit unless play
+
 count = 0
 high_score_list = {}
+name = Visualized.new
 t_cards = name.tabled_cards
-print 'Would you like a tutorial? [Y/N]'
+
+print 'Would you like a tutorial? [Y/N]: '
 tutorial if gets.chomp.eql?('Y')
-print 'Do you want play with a timer? [Y/N]'
+
+print 'Do you want play with a timer? [Y/N]: '
 timer_ask = gets.chomp
+
 while play && t_cards.size != 0
-  print_cards t_cards
+  # Checking set existence among dealt cards
+  print_cards t_cards  
   all = name.allSets(t_cards)
   while all.length < 1
     puts "There are no sets in the given deck - we will add more cards."
@@ -388,14 +395,17 @@ while play && t_cards.size != 0
   end
   puts "There are #{all.size} possible set(s) in the given deck." if all.size >= 1
   puts
+
+  # Card selection with or without time
   if timer_ask.eql?('Y')
-    print "Enter the time in seconds it will take for you to find a single set (You will be prompted for the set when the timer ends):"
+    print "Enter the time in seconds it will take for you to find a single set (You will be prompted for the set when the timer ends): "
     user_value = gets.to_i
     if(user_value<0)
       puts
-      print "Enter the time in seconds it will take for you to find a single set (You will be prompted for the set when the timer ends):"
+      print "Enter the time in seconds it will take for you to find a single set (You will be prompted for the set when the timer ends): "
       user_value = gets.to_i
     end
+
     puts "You have #{user_value} seconds to find a set in the given cards"
     t = elapsed_time(user_value)
     while Time.new < t
@@ -413,7 +423,9 @@ while play && t_cards.size != 0
   else
     selection = selection_cards(t_cards)
   end
-  if selection[0].eql? 'q'
+
+  # Termination/Set checking
+  if selection[0].eql?('q')
     play = false
   else
     if isSet?(selection)
@@ -427,4 +439,6 @@ while play && t_cards.size != 0
   end
 end
 
-high_score(count, high_score_list) # When game has finished will display current high score
+# When the game has finished display current high scores
+high_score(count, high_score_list) 
+
